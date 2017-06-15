@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4297EDD1EF2D1D300A0DE1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDC1EF2D1D300A0DE1F /* AppDelegate.swift */; };
-		B4297EDF1EF2D1D300A0DE1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDE1EF2D1D300A0DE1F /* ViewController.swift */; };
-		B4297EE21EF2D1D300A0DE1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE01EF2D1D300A0DE1F /* Main.storyboard */; };
+		B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */; };
 		B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */; };
-		B4297EE71EF2D1D300A0DE1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE51EF2D1D300A0DE1F /* LaunchScreen.storyboard */; };
 		B4297EF21EF2D1D300A0DE1F /* BackPortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EF11EF2D1D300A0DE1F /* BackPortalTests.swift */; };
 		B4297EFD1EF2D1D300A0DE1F /* BackPortalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EFC1EF2D1D300A0DE1F /* BackPortalUITests.swift */; };
+		B4297F131EF2D4D500A0DE1F /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297F151EF2D4D500A0DE1F /* Launch.storyboard */; };
+		B4297F181EF2D5FF00A0DE1F /* Application.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */; };
+		B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +35,8 @@
 
 /* Begin PBXFileReference section */
 		B4297ED91EF2D1D300A0DE1F /* BackPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4297EDC1EF2D1D300A0DE1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4297EDE1EF2D1D300A0DE1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B4297EE11EF2D1D300A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalAppDelegate.swift; sourceTree = "<group>"; };
 		B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B4297EE61EF2D1D300A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4297EE81EF2D1D300A0DE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4297EED1EF2D1D300A0DE1F /* BackPortalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackPortalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4297EF11EF2D1D300A0DE1F /* BackPortalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackPortalTests.swift; sourceTree = "<group>"; };
@@ -47,6 +44,9 @@
 		B4297EF81EF2D1D300A0DE1F /* BackPortalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackPortalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4297EFC1EF2D1D300A0DE1F /* BackPortalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackPortalUITests.swift; sourceTree = "<group>"; };
 		B4297EFE1EF2D1D300A0DE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4297F141EF2D4D500A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
+		B4297F191EF2D5FF00A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Application.storyboard; sourceTree = "<group>"; };
+		B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +97,9 @@
 		B4297EDB1EF2D1D300A0DE1F /* BackPortal */ = {
 			isa = PBXGroup;
 			children = (
-				B4297EDC1EF2D1D300A0DE1F /* AppDelegate.swift */,
-				B4297EDE1EF2D1D300A0DE1F /* ViewController.swift */,
-				B4297EE01EF2D1D300A0DE1F /* Main.storyboard */,
-				B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */,
-				B4297EE51EF2D1D300A0DE1F /* LaunchScreen.storyboard */,
-				B4297EE81EF2D1D300A0DE1F /* Info.plist */,
+				B4297F0B1EF2D41F00A0DE1F /* Views */,
+				B4297F1B1EF2D61D00A0DE1F /* ViewControllers */,
+				B4297F0A1EF2D39B00A0DE1F /* SupportingFiles */,
 			);
 			path = BackPortal;
 			sourceTree = "<group>";
@@ -123,6 +120,33 @@
 				B4297EFE1EF2D1D300A0DE1F /* Info.plist */,
 			);
 			path = BackPortalUITests;
+			sourceTree = "<group>";
+		};
+		B4297F0A1EF2D39B00A0DE1F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */,
+				B4297EE81EF2D1D300A0DE1F /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		B4297F0B1EF2D41F00A0DE1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */,
+				B4297F151EF2D4D500A0DE1F /* Launch.storyboard */,
+				B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4297F1B1EF2D61D00A0DE1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4297EE71EF2D1D300A0DE1F /* LaunchScreen.storyboard in Resources */,
 				B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */,
-				B4297EE21EF2D1D300A0DE1F /* Main.storyboard in Resources */,
+				B4297F131EF2D4D500A0DE1F /* Launch.storyboard in Resources */,
+				B4297F181EF2D5FF00A0DE1F /* Application.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4297EDF1EF2D1D300A0DE1F /* ViewController.swift in Sources */,
-				B4297EDD1EF2D1D300A0DE1F /* AppDelegate.swift in Sources */,
+				B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */,
+				B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,20 +320,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B4297EE01EF2D1D300A0DE1F /* Main.storyboard */ = {
+		B4297F151EF2D4D500A0DE1F /* Launch.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B4297EE11EF2D1D300A0DE1F /* Base */,
+				B4297F141EF2D4D500A0DE1F /* Base */,
 			);
-			name = Main.storyboard;
+			name = Launch.storyboard;
 			sourceTree = "<group>";
 		};
-		B4297EE51EF2D1D300A0DE1F /* LaunchScreen.storyboard */ = {
+		B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B4297EE61EF2D1D300A0DE1F /* Base */,
+				B4297F191EF2D5FF00A0DE1F /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Application.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -414,7 +438,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BackPortal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BackPortal/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cloudmineinc.BackPortal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +451,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BackPortal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BackPortal/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cloudmineinc.BackPortal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
