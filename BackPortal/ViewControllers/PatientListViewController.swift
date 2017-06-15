@@ -34,10 +34,21 @@ extension PatientListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patients.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64.0
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PatientCell", for: indexPath)
-
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PatientCell", for: indexPath) as? PatientCell,
+            indexPath.row < patients.count
+        else {
+            assert(false, "Expected to find a PatientCell and valid indexPath")
+            return UITableViewCell()
+        }
+        
+        cell.configure(with: patients[indexPath.row])
         return cell
     }
 }

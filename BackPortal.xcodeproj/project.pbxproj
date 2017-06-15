@@ -21,6 +21,7 @@
 		B41DC02B1EF324E500B7DAE9 /* Patients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41DC02D1EF324E500B7DAE9 /* Patients.storyboard */; };
 		B41DC02F1EF325E600B7DAE9 /* PatientSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC02E1EF325E600B7DAE9 /* PatientSplitViewController.swift */; };
 		B41DC0311EF32A8B00B7DAE9 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0301EF32A8B00B7DAE9 /* PatientListViewController.swift */; };
+		B41DC0331EF3306900B7DAE9 /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0321EF3306900B7DAE9 /* PatientCell.swift */; };
 		B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */; };
 		B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */; };
 		B4297EF21EF2D1D300A0DE1F /* BackPortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EF11EF2D1D300A0DE1F /* BackPortalTests.swift */; };
@@ -65,6 +66,7 @@
 		B41DC02C1EF324E500B7DAE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Patients.storyboard; sourceTree = "<group>"; };
 		B41DC02E1EF325E600B7DAE9 /* PatientSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientSplitViewController.swift; sourceTree = "<group>"; };
 		B41DC0301EF32A8B00B7DAE9 /* PatientListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
+		B41DC0321EF3306900B7DAE9 /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		B4297ED91EF2D1D300A0DE1F /* BackPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalAppDelegate.swift; sourceTree = "<group>"; };
 		B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				B41DC01F1EF2FAC900B7DAE9 /* MainPanel.storyboard */,
 				B41DC0261EF2FD9100B7DAE9 /* Account.storyboard */,
 				B41DC02D1EF324E500B7DAE9 /* Patients.storyboard */,
+				B41DC0321EF3306900B7DAE9 /* PatientCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				B41DC0211EF2FB6500B7DAE9 /* MainPanelViewController.swift in Sources */,
 				B41DC0181EF2DF5900B7DAE9 /* AuthViewController.swift in Sources */,
 				B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */,
+				B41DC0331EF3306900B7DAE9 /* PatientCell.swift in Sources */,
 				B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */,
 				B41DC02F1EF325E600B7DAE9 /* PatientSplitViewController.swift in Sources */,
 			);
