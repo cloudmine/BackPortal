@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="46b-mm-gQe">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Hd8-4K-eui">
+            <objects>
+                <viewController id="ERB-Ib-2Rx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gsd-S5-LLr"/>
+                        <viewControllerLayoutGuide type="bottom" id="dAv-Wy-m4a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YOJ-F2-74r">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ezo-cS-6BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="128"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="U1i-Rb-4jE">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="cGM-zU-NGq" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hCh-w1-5W8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GPH-PQ-9FB">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GPH-PQ-9FB" id="CdH-lg-9oF">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cGM-zU-NGq" id="C3V-rs-DlQ"/>
+                            <outlet property="delegate" destination="cGM-zU-NGq" id="joC-d1-iHn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="XeT-2r-ZZI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qZa-jh-hR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="-527"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7E3-Or-qwX">
+            <objects>
+                <navigationController id="R5O-fh-2CA" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OvU-bd-bby">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cGM-zU-NGq" kind="relationship" relationship="rootViewController" id="vLr-zG-DQY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcT-Qo-brq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="-527"/>
+        </scene>
+        <!--Patients-->
+        <scene sceneID="e5b-1M-bZU">
+            <objects>
+                <splitViewController id="46b-mm-gQe" customClass="PatientSplitViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Patients" image="Patients" id="bm1-D0-DaC"/>
+                    <connections>
+                        <segue destination="R5O-fh-2CA" kind="relationship" relationship="masterViewController" id="QgB-wH-GtN"/>
+                        <segue destination="ERB-Ib-2Rx" kind="relationship" relationship="detailViewController" id="gGG-Nk-ibW"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOf-KA-tD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-734" y="-134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Patients" width="28" height="28"/>
+    </resources>
+</document>
