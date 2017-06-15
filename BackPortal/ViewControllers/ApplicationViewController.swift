@@ -10,8 +10,7 @@ class ApplicationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if CMHUser.current().isLoggedIn {
-            // Show main interface
-            print("[PORTAL] TODO: Show main interface")
+            showMainPanel()
         } else {
             showAuthScreen()
         }
@@ -29,6 +28,16 @@ private extension ApplicationViewController {
             }
             
             self.present(authVC, animated: true, completion: nil)
+        }
+    }
+    
+    func showMainPanel() {
+        onMain {
+            guard let mainVC = UIStoryboard(name: "MainPanel", bundle: Bundle.main).instantiateInitialViewController() as? MainPanelViewController else {
+                return
+            }
+            
+            self.present(mainVC, animated: false, completion: nil)
         }
     }
 }
