@@ -27,21 +27,34 @@
             </objects>
             <point key="canvasLocation" x="49" y="128"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Patients-->
         <scene sceneID="U1i-Rb-4jE">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="cGM-zU-NGq" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="cGM-zU-NGq" customClass="PatientListViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hCh-w1-5W8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GPH-PQ-9FB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" id="GPH-PQ-9FB">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GPH-PQ-9FB" id="CdH-lg-9oF">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Zero" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x8-Zt-O7g">
+                                            <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="leading" secondItem="CdH-lg-9oF" secondAttribute="leading" constant="20" symbolic="YES" id="JQj-77-rA4"/>
+                                        <constraint firstAttribute="trailing" secondItem="9x8-Zt-O7g" secondAttribute="trailing" constant="20" symbolic="YES" id="iFX-Pa-NIx"/>
+                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="centerY" secondItem="CdH-lg-9oF" secondAttribute="centerY" id="thA-cx-bWS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -50,7 +63,7 @@
                             <outlet property="delegate" destination="cGM-zU-NGq" id="joC-d1-iHn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="XeT-2r-ZZI"/>
+                    <navigationItem key="navigationItem" title="Patients" id="XeT-2r-ZZI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZa-jh-hR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
