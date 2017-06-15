@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62E0C9B8F175D9C2BDBA1489 /* Pods_BackPortalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB4850FC2AFCB732D18AAF8 /* Pods_BackPortalTests.framework */; };
 		995FB5B058816FAAFF7AFD43 /* Pods_BackPortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */; };
+		B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */; };
 		B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */; };
 		B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */; };
 		B4297EF21EF2D1D300A0DE1F /* BackPortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EF11EF2D1D300A0DE1F /* BackPortalTests.swift */; };
@@ -41,6 +42,7 @@
 		6B9CB4F026613D1FC355F9B5 /* Pods_BackPortalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackPortalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75148C20DE6AC9B502B9E0BF /* Pods-BackPortalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackPortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortalSecrets.swift; sourceTree = "<group>"; };
 		B4297ED91EF2D1D300A0DE1F /* BackPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalAppDelegate.swift; sourceTree = "<group>"; };
 		B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B41DC00D1EF2D9A000B7DAE9 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
 		B4297ED01EF2D1D300A0DE1F = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 			children = (
 				B4297F0B1EF2D41F00A0DE1F /* Views */,
 				B4297F1B1EF2D61D00A0DE1F /* ViewControllers */,
+				B41DC00D1EF2D9A000B7DAE9 /* Lib */,
 				B4297F0A1EF2D39B00A0DE1F /* SupportingFiles */,
 			);
 			path = BackPortal;
@@ -472,6 +483,7 @@
 			files = (
 				B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */,
 				B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */,
+				B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +738,7 @@
 				B4297F031EF2D1D300A0DE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4297F041EF2D1D300A0DE1F /* Build configuration list for PBXNativeTarget "BackPortalTests" */ = {
 			isa = XCConfigurationList;
@@ -734,6 +747,7 @@
 				B4297F061EF2D1D300A0DE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4297F071EF2D1D300A0DE1F /* Build configuration list for PBXNativeTarget "BackPortalUITests" */ = {
 			isa = XCConfigurationList;
@@ -742,6 +756,7 @@
 				B4297F091EF2D1D300A0DE1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

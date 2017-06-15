@@ -47,4 +47,4 @@ Carthage/Build
 fastlane/report.xml
 fastlane/screenshots
 
-BCMSecrets.h
+PortalSecrets.swift
