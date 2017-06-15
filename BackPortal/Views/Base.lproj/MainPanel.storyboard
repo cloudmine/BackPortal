@@ -18,10 +18,23 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="ly5-Yz-zou" kind="relationship" relationship="viewControllers" id="XER-O0-eID"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBM-TG-b5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-829" y="-467"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="vHs-al-YxR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="ly5-Yz-zou" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="hpU-FF-QiZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VW5-tb-EUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-400" y="-467"/>
         </scene>
     </scenes>
 </document>
