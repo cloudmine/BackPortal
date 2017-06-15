@@ -11,6 +11,7 @@ class ApplicationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if CMHUser.current().isLoggedIn {
             // Show main interface
+            print("[PORTAL] TODO: Show main interface")
         } else {
             showAuthScreen()
         }

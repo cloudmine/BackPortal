@@ -27,16 +27,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhB-bh-TV6" userLabel="Content VIew">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="463.5"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wwg-yl-bsb">
-                                                <rect key="frame" x="337" y="239.5" width="350" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="350" id="0sk-BL-XZv"/>
-                                                    <constraint firstAttribute="height" constant="48" id="b1n-Yy-tI6"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BackTrack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PgK-eM-M6T">
                                                 <rect key="frame" x="20" y="64" width="984" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
@@ -49,28 +39,41 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wwg-yl-bsb">
+                                                <rect key="frame" x="337" y="239" width="350" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="350" id="0sk-BL-XZv"/>
+                                                    <constraint firstAttribute="height" constant="48" id="b1n-Yy-tI6"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NW-hb-eQi">
+                                                <rect key="frame" x="339" y="237" width="348" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NkJ-hM-Mzo">
                                                 <rect key="frame" x="337" y="299.5" width="350" height="48"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCv-7L-jtS">
+                                                <rect key="frame" x="339" y="349" width="348" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmJ-jP-fcb">
                                                 <rect key="frame" x="493" y="413.5" width="38" height="30"/>
                                                 <state key="normal" title="Login"/>
+                                                <connections>
+                                                    <action selector="didPressWithLoginButton:" destination="Lj4-Ju-6jL" eventType="touchUpInside" id="ii9-GE-e5k"/>
+                                                </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NW-hb-eQi">
-                                                <rect key="frame" x="339" y="237.5" width="348" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCv-7L-jtS">
-                                                <rect key="frame" x="339" y="349.5" width="348" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -115,6 +118,12 @@
                             <constraint firstItem="hhB-bh-TV6" firstAttribute="width" secondItem="lez-Tj-ZiJ" secondAttribute="width" id="yxk-uM-ohG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailErrorLabel" destination="8NW-hb-eQi" id="xmb-VJ-F0R"/>
+                        <outlet property="emailTextField" destination="wwg-yl-bsb" id="UvQ-BG-xJB"/>
+                        <outlet property="passwordErrorLabel" destination="fCv-7L-jtS" id="37t-fr-7jU"/>
+                        <outlet property="passwordTextField" destination="NkJ-hM-Mzo" id="ghP-2I-jWw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyF-NR-IUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,6 +13,7 @@
 		B41DC0121EF2DDB800B7DAE9 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41DC0141EF2DDB800B7DAE9 /* Authentication.storyboard */; };
 		B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */; };
 		B41DC0181EF2DF5900B7DAE9 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0171EF2DF5900B7DAE9 /* AuthViewController.swift */; };
+		B41DC01A1EF2E3F200B7DAE9 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0191EF2E3F200B7DAE9 /* AlertUtils.swift */; };
 		B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */; };
 		B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */; };
 		B4297EF21EF2D1D300A0DE1F /* BackPortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297EF11EF2D1D300A0DE1F /* BackPortalTests.swift */; };
@@ -49,6 +50,7 @@
 		B41DC0131EF2DDB800B7DAE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchUtils.swift; sourceTree = "<group>"; };
 		B41DC0171EF2DF5900B7DAE9 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		B41DC0191EF2E3F200B7DAE9 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 		B4297ED91EF2D1D300A0DE1F /* BackPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4297EDC1EF2D1D300A0DE1F /* PortalAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalAppDelegate.swift; sourceTree = "<group>"; };
 		B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */,
 				B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */,
+				B41DC0191EF2E3F200B7DAE9 /* AlertUtils.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			files = (
 				B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */,
 				B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */,
+				B41DC01A1EF2E3F200B7DAE9 /* AlertUtils.swift in Sources */,
 				B41DC0181EF2DF5900B7DAE9 /* AuthViewController.swift in Sources */,
 				B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */,
 				B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */,
