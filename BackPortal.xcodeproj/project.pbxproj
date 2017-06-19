@@ -30,6 +30,7 @@
 		B4297F181EF2D5FF00A0DE1F /* Application.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */; };
 		B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */; };
 		B45316531EF83E0A004A8FD9 /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */; };
+		B45316551EF847EB004A8FD9 /* NoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45316541EF847EB004A8FD9 /* NoSelectionViewController.swift */; };
 		B4C2BE1C1EF823D200E70A31 /* ActiviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */; };
 		B4C2BE1E1EF8328100E70A31 /* PatientDetailNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */; };
 		E3E647F8FB412EE4983BFCCF /* Pods_BackPortalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9CB4F026613D1FC355F9B5 /* Pods_BackPortalUITests.framework */; };
@@ -84,6 +85,7 @@
 		B4297F191EF2D5FF00A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Application.storyboard; sourceTree = "<group>"; };
 		B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationViewController.swift; sourceTree = "<group>"; };
 		B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
+		B45316541EF847EB004A8FD9 /* NoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSelectionViewController.swift; sourceTree = "<group>"; };
 		B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviesViewController.swift; sourceTree = "<group>"; };
 		B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailNavController.swift; sourceTree = "<group>"; };
 		B7D0E29578B809FC4C0276D6 /* Pods-BackPortalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				B41DC0271EF2FE0600B7DAE9 /* AccountViewController.swift */,
 				B41DC02E1EF325E600B7DAE9 /* PatientSplitViewController.swift */,
 				B41DC0301EF32A8B00B7DAE9 /* PatientListViewController.swift */,
+				B45316541EF847EB004A8FD9 /* NoSelectionViewController.swift */,
 				B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */,
 				B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */,
 				B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */,
@@ -531,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45316551EF847EB004A8FD9 /* NoSelectionViewController.swift in Sources */,
 				B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */,
 				B45316531EF83E0A004A8FD9 /* PatientDetailViewController.swift in Sources */,
 				B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */,

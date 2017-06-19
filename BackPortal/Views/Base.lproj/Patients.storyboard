@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gP-rf-912" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="180"/>
+            <point key="canvasLocation" x="846" y="180"/>
         </scene>
         <!--Activities-->
         <scene sceneID="Hd8-4K-eui">
@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezo-cS-6BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="180"/>
+            <point key="canvasLocation" x="1549" y="180"/>
         </scene>
         <!--Patients-->
         <scene sceneID="U1i-Rb-4jE">
@@ -102,6 +102,7 @@
                                 <connections>
                                     <outlet property="emailLabel" destination="olY-vH-efG" id="MPM-qP-QGu"/>
                                     <outlet property="nameLabel" destination="9x8-Zt-O7g" id="q64-Uy-UvN"/>
+                                    <segue destination="sOB-VH-YDk" kind="showDetail" id="Nxb-0S-IS8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -140,6 +141,36 @@
             </objects>
             <point key="canvasLocation" x="49" y="-527"/>
         </scene>
+        <!--No Selection View Controller-->
+        <scene sceneID="fFy-7d-w2E">
+            <objects>
+                <viewController id="M9U-A2-3ko" customClass="NoSelectionViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QBL-eW-rDV"/>
+                        <viewControllerLayoutGuide type="bottom" id="BeB-ec-cwn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DXD-Dy-3ec">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Patient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnW-wL-jc5">
+                                <rect key="frame" x="255.5" y="367.5" width="192.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZnW-wL-jc5" firstAttribute="centerY" secondItem="DXD-Dy-3ec" secondAttribute="centerY" id="JXh-fo-fdO"/>
+                            <constraint firstItem="ZnW-wL-jc5" firstAttribute="centerX" secondItem="DXD-Dy-3ec" secondAttribute="centerX" id="ikN-TM-tr0"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nwt-D3-Seh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="329"/>
+        </scene>
         <!--Patients-->
         <scene sceneID="e5b-1M-bZU">
             <objects>
@@ -147,7 +178,7 @@
                     <tabBarItem key="tabBarItem" title="Patients" image="Patients" id="bm1-D0-DaC"/>
                     <connections>
                         <segue destination="R5O-fh-2CA" kind="relationship" relationship="masterViewController" id="QgB-wH-GtN"/>
-                        <segue destination="sOB-VH-YDk" kind="relationship" relationship="detailViewController" id="rkd-HM-5Ks"/>
+                        <segue destination="M9U-A2-3ko" kind="relationship" relationship="detailViewController" id="cD4-yJ-Nta"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOf-KA-tD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,7 +243,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqY-gK-rah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1418" y="205"/>
+            <point key="canvasLocation" x="2183" y="205"/>
         </scene>
     </scenes>
     <resources>
