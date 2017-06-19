@@ -313,6 +313,7 @@
 				TargetAttributes = {
 					B4297ED81EF2D1D300A0DE1F = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = J3HE3B52AJ;
 						ProvisioningStyle = Automatic;
 					};
 					B4297EEC1EF2D1D300A0DE1F = {
@@ -718,6 +719,7 @@
 			baseConfigurationReference = E25F22207946ED8182DCFB92 /* Pods-BackPortal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J3HE3B52AJ;
 				INFOPLIST_FILE = "$(SRCROOT)/BackPortal/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -732,6 +734,7 @@
 			baseConfigurationReference = F3D17AF8B8EBBB1590E6F51C /* Pods-BackPortal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J3HE3B52AJ;
 				INFOPLIST_FILE = "$(SRCROOT)/BackPortal/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
