@@ -1,8 +1,15 @@
 import UIKit
+import CareKit.NSDateComponents_CarePlan
 
 fileprivate let InterventionActivityReuseIdentifier = "InterventionCell"
 
 class ActiviesViewController: UICollectionViewController {
+    
+    // MARK: Private properties
+    
+    fileprivate var interventionEvents: [[OCKCarePlanEvent]] = []
+    
+    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -12,12 +19,17 @@ class ActiviesViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("[PORTAL] Activies Collection Appeared")
         
-        let patient = patientSplitViewController?.patientListViewController?.selectedPatient
+        guard let patient = patientSplitViewController?.patientListViewController?.selectedPatient else {
+            return
+        }
         
-        print("[PORTAL] Activies Collection Appeared \(patient?.name)")
+        update(for: patient, on: Date())
     }
 }
+
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
     
@@ -31,16 +43,38 @@ extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
 extension ActiviesViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return interventionEvents.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InterventionActivityReuseIdentifier, for: indexPath)
         return cell
+    }
+}
+
+// MARK: Private Helpers
+
+fileprivate extension ActiviesViewController {
+    
+    func update(for patient: OCKPatient, on date: Date) {
+        
+        let todayComponents = NSDateComponents(date: Date(), calendar: Calendar.current) as DateComponents
+        
+        patient.store.events(onDate: todayComponents, type: .intervention) { (events, error) in
+            guard nil == error else {
+                print("[PORTAL] Error getting events: \(error!)")
+                return
+            }
+            
+            self.interventionEvents = events
+            onMain {
+                self.collectionView?.reloadData()
+            }
+        }
     }
 }
 
