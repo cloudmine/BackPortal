@@ -10,10 +10,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Patient Detail Nav Controller-->
+        <scene sceneID="nfg-Nk-Nj0">
+            <objects>
+                <navigationController id="sOB-VH-YDk" customClass="PatientDetailNavController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MvP-ay-eVU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ERB-Ib-2Rx" kind="relationship" relationship="rootViewController" id="2TL-nH-HUY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5gP-rf-912" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="180"/>
+        </scene>
+        <!--Activities-->
         <scene sceneID="Hd8-4K-eui">
             <objects>
-                <viewController id="ERB-Ib-2Rx" sceneMemberID="viewController">
+                <viewController id="ERB-Ib-2Rx" customClass="PatientDetailViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gsd-S5-LLr"/>
                         <viewControllerLayoutGuide type="bottom" id="dAv-Wy-m4a"/>
@@ -23,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meJ-oo-LPF">
-                                <rect key="frame" x="0.0" y="20" width="703" height="748"/>
+                                <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                                 <connections>
                                     <segue destination="0eu-cO-tCq" kind="embed" id="W3Z-Mq-a6H"/>
                                 </connections>
@@ -37,10 +53,13 @@
                             <constraint firstItem="dAv-Wy-m4a" firstAttribute="top" secondItem="meJ-oo-LPF" secondAttribute="bottom" id="rhj-I9-nTp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Activities" id="LfF-cN-cgL">
+                        <barButtonItem key="backBarButtonItem" id="SyF-IP-KPf"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezo-cS-6BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="152"/>
+            <point key="canvasLocation" x="775" y="180"/>
         </scene>
         <!--Patients-->
         <scene sceneID="U1i-Rb-4jE">
@@ -128,7 +147,7 @@
                     <tabBarItem key="tabBarItem" title="Patients" image="Patients" id="bm1-D0-DaC"/>
                     <connections>
                         <segue destination="R5O-fh-2CA" kind="relationship" relationship="masterViewController" id="QgB-wH-GtN"/>
-                        <segue destination="ERB-Ib-2Rx" kind="relationship" relationship="detailViewController" id="gGG-Nk-ibW"/>
+                        <segue destination="sOB-VH-YDk" kind="relationship" relationship="detailViewController" id="rkd-HM-5Ks"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOf-KA-tD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,8 +158,8 @@
         <scene sceneID="UPg-2c-7Uc">
             <objects>
                 <collectionViewController id="0eu-cO-tCq" customClass="ActiviesViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4XY-SU-o9U">
-                        <rect key="frame" x="0.0" y="0.0" width="703" height="748"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="4XY-SU-o9U">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qhC-4l-en9">
@@ -193,7 +212,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqY-gK-rah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="152"/>
+            <point key="canvasLocation" x="1418" y="205"/>
         </scene>
     </scenes>
     <resources>
