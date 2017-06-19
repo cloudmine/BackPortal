@@ -8,3 +8,15 @@ class PatientSplitViewController: UISplitViewController {
 
     }
 }
+
+extension PatientSplitViewController {
+    
+    var patientListViewController: PatientListViewController? {
+        return childViewControllers
+                .flatMap({ $0 as? PatientMasterNavController })
+                .first?
+                .viewControllers
+                .flatMap({ $0 as? PatientListViewController })
+                .first
+    }
+}

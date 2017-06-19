@@ -11,6 +11,16 @@ class PatientListViewController: UITableViewController {
         }
     }
     
+    // MARK: Public Properties
+    
+    var selectedPatient: OCKPatient? {
+        guard let row = tableView?.indexPathForSelectedRow?.row, row < patients.count else {
+            return nil
+        }
+        
+        return patients[row]
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {

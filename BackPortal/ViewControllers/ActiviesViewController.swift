@@ -3,12 +3,19 @@ import UIKit
 fileprivate let InterventionActivityReuseIdentifier = "InterventionCell"
 
 class ActiviesViewController: UICollectionViewController {
-    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("[PORTAL] Hello Activies Collection")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let patient = patientSplitViewController?.patientListViewController?.selectedPatient
+        
+        print("[PORTAL] Activies Collection Appeared \(patient?.name)")
     }
 }
 
