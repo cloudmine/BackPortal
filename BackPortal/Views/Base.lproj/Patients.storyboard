@@ -78,6 +78,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Patients" id="XeT-2r-ZZI"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Pbu-nh-ixU">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="didPullWithRefreshControl:" destination="cGM-zU-NGq" eventType="valueChanged" id="XeG-cs-AsU"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZa-jh-hR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

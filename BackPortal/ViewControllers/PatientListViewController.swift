@@ -3,6 +3,8 @@ import CMHealth
 
 class PatientListViewController: UITableViewController {
     
+    // MARK: Private Properties
+    
     fileprivate var patients: [OCKPatient] = [] {
         didSet {
             renderUI()
@@ -19,7 +21,17 @@ class PatientListViewController: UITableViewController {
     private func renderUI() {
         onMain {
             self.tableView?.reloadData()
+            self.refreshControl?.endRefreshing()
         }
+    }
+}
+
+// MARK: Target-Action
+
+extension PatientListViewController {
+    
+    @IBAction func didPull(refreshControl: UIRefreshControl) {
+        fetchPatients()
     }
 }
 
@@ -67,6 +79,10 @@ extension PatientListViewController {
 private extension PatientListViewController {
     
     func fetchPatients() {
+        onMain {
+            self.refreshControl?.beginRefreshing()
+        }
+        
         CMHCarePlanStore.fetchAllPatients { (success, patients, errors) in
             guard success else {
                 print("[PORTAL] Failed to fetch patients: \(errors)")
