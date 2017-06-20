@@ -52,7 +52,17 @@ extension ActiviesViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InterventionActivityReuseIdentifier, for: indexPath)
-        return cell
+        
+        guard
+            let interventionCell = cell as? InterventionCell,
+            indexPath.row < interventionEvents.count
+        else {
+            return cell
+        }
+        
+        interventionCell.configure(with: interventionEvents[indexPath.row])
+        
+        return interventionCell
     }
 }
 
