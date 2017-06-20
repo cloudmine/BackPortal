@@ -211,26 +211,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ypA-Kp-I7c">
-                                                    <rect key="frame" x="20" y="18" width="160" height="24"/>
+                                                    <rect key="frame" x="20" y="15.5" width="160" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6y7-EJ-zGK">
-                                                    <rect key="frame" x="20" y="40" width="160" height="17"/>
+                                                    <rect key="frame" x="20" y="37.5" width="160" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3vQ-nh-Vi5">
+                                                    <rect key="frame" x="20" y="56" width="172" height="36"/>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="6y7-EJ-zGK" firstAttribute="top" secondItem="ypA-Kp-I7c" secondAttribute="bottom" constant="-2" id="9OE-ih-gTi"/>
-                                                <constraint firstItem="ypA-Kp-I7c" firstAttribute="centerY" secondItem="6dP-Ky-jCT" secondAttribute="centerY" multiplier="3/5" id="Nce-vB-qXE"/>
+                                                <constraint firstAttribute="bottom" secondItem="3vQ-nh-Vi5" secondAttribute="bottom" constant="8" id="Faj-v2-fcS"/>
+                                                <constraint firstItem="3vQ-nh-Vi5" firstAttribute="top" secondItem="6y7-EJ-zGK" secondAttribute="bottom" constant="2" id="H7I-pe-iDK"/>
+                                                <constraint firstAttribute="trailing" secondItem="3vQ-nh-Vi5" secondAttribute="trailing" constant="8" id="N7P-vF-J7V"/>
+                                                <constraint firstItem="ypA-Kp-I7c" firstAttribute="centerY" secondItem="6dP-Ky-jCT" secondAttribute="centerY" multiplier="55/100" id="Nce-vB-qXE"/>
                                                 <constraint firstItem="6y7-EJ-zGK" firstAttribute="leading" secondItem="ypA-Kp-I7c" secondAttribute="leading" id="XGc-h4-Ia6"/>
                                                 <constraint firstAttribute="trailing" secondItem="ypA-Kp-I7c" secondAttribute="trailing" constant="20" symbolic="YES" id="Xvd-lv-GbK"/>
                                                 <constraint firstItem="ypA-Kp-I7c" firstAttribute="leading" secondItem="6dP-Ky-jCT" secondAttribute="leading" constant="20" symbolic="YES" id="m4r-mC-Jl2"/>
                                                 <constraint firstItem="6y7-EJ-zGK" firstAttribute="trailing" secondItem="ypA-Kp-I7c" secondAttribute="trailing" id="mFP-Lz-Gmx"/>
+                                                <constraint firstItem="3vQ-nh-Vi5" firstAttribute="leading" secondItem="6y7-EJ-zGK" secondAttribute="leading" id="xEt-eu-Yke"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -243,6 +250,7 @@
                                 </constraints>
                                 <size key="customSize" width="200" height="100"/>
                                 <connections>
+                                    <outlet property="eventsStackView" destination="3vQ-nh-Vi5" id="g12-Vb-Rhn"/>
                                     <outlet property="nameLabel" destination="ypA-Kp-I7c" id="dNp-4w-HKN"/>
                                     <outlet property="subLabel" destination="6y7-EJ-zGK" id="epz-g5-F8F"/>
                                 </connections>
@@ -256,7 +264,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqY-gK-rah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="205"/>
+            <point key="canvasLocation" x="2182.91015625" y="204.6875"/>
         </scene>
     </scenes>
     <resources>
