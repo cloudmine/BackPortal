@@ -31,10 +31,28 @@ class ActiviesViewController: UICollectionViewController {
 
 // MARK: UICollectionViewDelegateFlowLayout
 
+fileprivate let PortalCellCellInternalSpacing = 8.0 as CGFloat
+fileprivate let PortalCellVerticalRowSpacing = 8.0 as CGFloat
+fileprivate let PortalCellContainerEdgeSpacing = 16.0 as CGFloat
+
 extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200.0, height: 100.0)
+        
+        let width = collectionView.bounds.size.width / 2.0 - (PortalCellCellInternalSpacing/2 + PortalCellContainerEdgeSpacing)
+        return CGSize(width: width, height: 100.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return PortalCellVerticalRowSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return PortalCellCellInternalSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: PortalCellContainerEdgeSpacing, bottom: 0.0, right: PortalCellContainerEdgeSpacing)
     }
 }
 
