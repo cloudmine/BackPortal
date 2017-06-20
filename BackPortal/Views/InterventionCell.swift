@@ -9,9 +9,15 @@ class InterventionCell: UICollectionViewCell {
     @IBOutlet fileprivate var subLabel: UILabel?
     @IBOutlet fileprivate var eventsStackView: UIStackView?
     
+    // MARK: Private Properties
+    
+    private var events: [OCKCarePlanEvent] = []
+    
     // MARK: Public
     
-    func configure(with events: [OCKCarePlanEvent]) {
+    func configure(with eventList: [OCKCarePlanEvent]) {
+        self.events = eventList
+        
         guard let activity = events.first?.activity else {
             return
         }
@@ -24,23 +30,9 @@ class InterventionCell: UICollectionViewCell {
             self.nameLabel?.text = activity.title
             self.subLabel?.text = activity.text
             
-            events.forEach { event in
-                let view = UIView()
-                
-                let size = (self.eventsStackView?.bounds.height ?? 36.0)
-                view.heightAnchor.constraint(equalToConstant: size).isActive = true
-                view.widthAnchor.constraint(equalToConstant: size).isActive = true
-                
-                view.layer.borderWidth = 2.0
-                view.layer.borderColor = activity.tintColor?.cgColor
-                view.layer.cornerRadius = size / 2.0
-                
-                if case .completed = event.state {
-                    view.backgroundColor = activity.tintColor
-                }
-                
-                self.eventsStackView?.addArrangedSubview(view)
-                print("[PORTAL] View Height: \(view.bounds.height)")
+            self.events.forEach { event in
+                let button = self.button(for: event, color: activity.tintColor)
+                self.eventsStackView?.addArrangedSubview(button)
             }
             
             let spaceView = UIView()
@@ -52,8 +44,36 @@ class InterventionCell: UICollectionViewCell {
             self.eventsStackView?.addArrangedSubview(spaceView)
         }
     }
+}
+
+// MARK: Private
+
+fileprivate extension InterventionCell {
     
-    // MARK: Private
+    func button(for event: OCKCarePlanEvent, color tintColor: UIColor?) -> UIButton {
+        let button = UIButton()
+        
+        button.tag = Int(event.occurrenceIndexOfDay)
+        button.addTarget(self, action: #selector(self.didPress(eventButton:)), for: .touchUpInside)
+        
+        let size = (self.eventsStackView?.bounds.height ?? 36.0)
+        button.heightAnchor.constraint(equalToConstant: size).isActive = true
+        button.widthAnchor.constraint(equalToConstant: size).isActive = true
+        
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = tintColor?.cgColor
+        button.layer.cornerRadius = size / 2.0
+        
+        if case .completed = event.state {
+            button.backgroundColor = tintColor
+        }
+        
+        return button
+    }
+    
+    @objc func didPress(eventButton: UIButton) {
+        print("[PORTAL] Did Press Event Occurrence: \(eventButton.tag)")
+    }
     
     func resetStackView() {
         guard let eventsStackView = eventsStackView else {
