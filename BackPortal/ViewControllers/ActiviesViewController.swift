@@ -8,6 +8,7 @@ class ActiviesViewController: UICollectionViewController {
     // MARK: Private properties
     
     fileprivate var interventionEvents: [[OCKCarePlanEvent]] = []
+    fileprivate var lastRenderedBounds: CGRect?
     
     
     // MARK: Lifecycle
@@ -26,6 +27,18 @@ class ActiviesViewController: UICollectionViewController {
         }
         
         update(for: patient, on: Date())
+        lastRenderedBounds = collectionView?.bounds
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard collectionView?.bounds != lastRenderedBounds else {
+            return
+        }
+        
+        lastRenderedBounds = collectionView?.bounds
+        collectionView?.collectionViewLayout.invalidateLayout()
     }
 }
 
