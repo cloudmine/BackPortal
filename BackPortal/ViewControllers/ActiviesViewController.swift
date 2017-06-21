@@ -2,6 +2,7 @@ import UIKit
 import CareKit.NSDateComponents_CarePlan
 
 fileprivate let InterventionActivityReuseIdentifier = "InterventionCell"
+fileprivate let AssessmentActivityReuseIdentifier = "AssessmentCell"
 
 class ActiviesViewController: UICollectionViewController {
     
@@ -71,30 +72,23 @@ extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
 extension ActiviesViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return interventionEvents.count
+        switch section {
+        case 0: return interventionEvents.count
+        case 1: return assessmentEvents.count
+        default: return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InterventionActivityReuseIdentifier, for: indexPath)
-        
-        guard
-            let interventionCell = cell as? InterventionCell,
-            indexPath.row < interventionEvents.count
-        else {
-            return cell
+        switch indexPath.section {
+        case 0: return interventionCell(from: collectionView, at: indexPath)
+        case 1: return assessmentCell(from: collectionView, at: indexPath)
+        default: fatalError()
         }
-        
-        interventionCell.configure(with: interventionEvents[indexPath.row]) { [weak self] event in
-            print("[PORTAL] Callback for event with occurrence: \(event.occurrenceIndexOfDay)")
-            
-            self?.toggle(interventionEvent: event)
-        }
-        
-        return interventionCell
     }
 }
 
@@ -151,6 +145,30 @@ fileprivate extension ActiviesViewController {
             
             self?.updateData(on: Date())
         }
+    }
+    
+    func interventionCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InterventionActivityReuseIdentifier, for: indexPath)
+        
+        guard
+            let interventionCell = cell as? InterventionCell,
+            indexPath.row < interventionEvents.count
+        else {
+                return cell
+        }
+        
+        interventionCell.configure(with: interventionEvents[indexPath.row]) { [weak self] event in
+            print("[PORTAL] Callback for event with occurrence: \(event.occurrenceIndexOfDay)")
+            
+            self?.toggle(interventionEvent: event)
+        }
+        
+        return interventionCell
+    }
+    
+    func assessmentCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssessmentActivityReuseIdentifier, for: indexPath)
+        return cell
     }
 }
 
