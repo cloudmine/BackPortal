@@ -7,17 +7,22 @@ class AssessmentCell: UICollectionViewCell {
     
     @IBOutlet fileprivate var nameLabel: UILabel?
     @IBOutlet fileprivate var subLabel: UILabel?
+    @IBOutlet fileprivate var valueLabel: UILabel?
+    @IBOutlet fileprivate var unitLabel: UILabel?
     
     func configure(with eventList: [OCKCarePlanEvent], tapBack: AssessmentEventTapCallback?) {
-        guard let activity = eventList.first?.activity else {
+        guard let event = eventList.first else {
             return
         }
         
         onMain {
             self.layer.cornerRadius = ActivityCellCornerRadius
             
-            self.nameLabel?.text = activity.title
-            self.subLabel?.text = activity.text
+            self.nameLabel?.text = event.activity.title
+            self.subLabel?.text = event.activity.text
+            self.valueLabel?.textColor = event.activity.tintColor
+            self.valueLabel?.text = event.result?.valueString
+            self.unitLabel?.text = event.result?.unitString
         }
     }
 }

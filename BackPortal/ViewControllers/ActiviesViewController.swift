@@ -63,7 +63,7 @@ extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.0, left: PortalCellContainerEdgeSpacing, bottom: 0.0, right: PortalCellContainerEdgeSpacing)
+        return UIEdgeInsets(top: 0.0, left: PortalCellContainerEdgeSpacing, bottom: 24.0, right: PortalCellContainerEdgeSpacing)
     }
 }
 
