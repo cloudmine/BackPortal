@@ -1,6 +1,8 @@
 import UIKit
 import CareKit
 
+typealias InterventionEventTapCallback = (OCKCarePlanEvent) -> Void
+
 class InterventionCell: UICollectionViewCell {
     
     // MARK: Outlets
@@ -11,12 +13,14 @@ class InterventionCell: UICollectionViewCell {
     
     // MARK: Private Properties
     
-    private var events: [OCKCarePlanEvent] = []
+    fileprivate var events: [OCKCarePlanEvent] = []
+    fileprivate var tapCallback: InterventionEventTapCallback? = nil
     
     // MARK: Public
     
-    func configure(with eventList: [OCKCarePlanEvent]) {
+    func configure(with eventList: [OCKCarePlanEvent], tapBack: InterventionEventTapCallback?) {
         self.events = eventList
+        self.tapCallback = tapBack
         
         guard let activity = events.first?.activity else {
             return
@@ -72,7 +76,11 @@ fileprivate extension InterventionCell {
     }
     
     @objc func didPress(eventButton: UIButton) {
-        print("[PORTAL] Did Press Event Occurrence: \(eventButton.tag)")
+        guard eventButton.tag < events.count else {
+            return
+        }
+        
+        tapCallback?(events[eventButton.tag])
     }
     
     func resetStackView() {

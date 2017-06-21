@@ -22,11 +22,7 @@ class ActiviesViewController: UICollectionViewController {
         super.viewDidAppear(animated)
         print("[PORTAL] Activies Collection Appeared")
         
-        guard let patient = patientSplitViewController?.patientListViewController?.selectedPatient else {
-            return
-        }
-        
-        update(for: patient, on: Date())
+        updateData(on: Date())
         lastRenderedBounds = collectionView?.bounds
     }
     
@@ -91,7 +87,11 @@ extension ActiviesViewController {
             return cell
         }
         
-        interventionCell.configure(with: interventionEvents[indexPath.row])
+        interventionCell.configure(with: interventionEvents[indexPath.row]) { [weak self] event in
+            print("[PORTAL] Callback for event with occurrence: \(event.occurrenceIndexOfDay)")
+            
+            self?.toggle(interventionEvent: event)
+        }
         
         return interventionCell
     }
@@ -101,9 +101,16 @@ extension ActiviesViewController {
 
 fileprivate extension ActiviesViewController {
     
-    func update(for patient: OCKPatient, on date: Date) {
+    var selectedPatient: OCKPatient? {
+        return patientSplitViewController?.patientListViewController?.selectedPatient
+    }
+    
+    func updateData(on date: Date) {
+        guard let patient = selectedPatient else {
+            return
+        }
         
-        let todayComponents = NSDateComponents(date: Date(), calendar: Calendar.current) as DateComponents
+        let todayComponents = NSDateComponents(date: date, calendar: Calendar.current) as DateComponents
         
         patient.store.events(onDate: todayComponents, type: .intervention) { (events, error) in
             guard nil == error else {
@@ -116,6 +123,34 @@ fileprivate extension ActiviesViewController {
                 self.collectionView?.reloadData()
             }
         }
+    }
+    
+    func toggle(interventionEvent event: OCKCarePlanEvent) {
+        guard case .intervention = event.activity.type else {
+            return
+        }
+        
+        let newState = toggledState(for: event)
+        
+        selectedPatient?.store.update(event, with: nil, state: newState) { [weak self] (success, event, error) in
+            guard success else {
+                print("[PORTAL] Error updating even in local store! \(String(describing: error))")
+                return
+            }
+            
+            self?.updateData(on: Date())
+        }
+    }
+}
+
+fileprivate func toggledState(for event: OCKCarePlanEvent) -> OCKCarePlanEventState {
+    switch event.state {
+    case .completed:
+        return .notCompleted
+    case .initial:
+        return .completed
+    case .notCompleted:
+        return .completed
     }
 }
 
