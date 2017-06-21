@@ -8,6 +8,7 @@ class ActiviesViewController: UICollectionViewController {
     // MARK: Private properties
     
     fileprivate var interventionEvents: [[OCKCarePlanEvent]] = []
+    fileprivate var assessmentEvents: [[OCKCarePlanEvent]] = []
     fileprivate var lastRenderedBounds: CGRect?
     
     
@@ -112,15 +113,25 @@ fileprivate extension ActiviesViewController {
         
         let todayComponents = NSDateComponents(date: date, calendar: Calendar.current) as DateComponents
         
-        patient.store.events(onDate: todayComponents, type: .intervention) { (events, error) in
-            guard nil == error else {
-                print("[PORTAL] Error getting events: \(error!)")
+        patient.store.events(onDate: todayComponents, type: .intervention) { (interventions, interventionError) in
+            guard nil == interventionError else {
+                print("[PORTAL] Error getting interventions: \(interventionError!)")
                 return
             }
             
-            self.interventionEvents = events
-            onMain {
-                self.collectionView?.reloadData()
+            patient.store.events(onDate: todayComponents, type: .assessment) { (assessments, assessmentError) in
+                guard nil == assessmentError else {
+                    print("[PORTAL] Error getting assessments: \(assessmentError!)")
+                    return
+                }
+                
+                
+                self.interventionEvents = interventions
+                self.assessmentEvents = assessments
+                
+                onMain {
+                    self.collectionView?.reloadData()
+                }
             }
         }
     }
