@@ -266,25 +266,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WHf-S2-gQ8">
-                                                    <rect key="frame" x="20" y="15.5" width="160" height="24"/>
+                                                    <rect key="frame" x="20" y="25.5" width="160" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u3u-V1-hfc">
-                                                    <rect key="frame" x="20" y="37.5" width="160" height="17"/>
+                                                    <rect key="frame" x="20" y="47.5" width="160" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0Ju-mg-Hms">
-                                                    <rect key="frame" x="20" y="56" width="172" height="36"/>
+                                                    <rect key="frame" x="20" y="66" width="172" height="26"/>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="0Ju-mg-Hms" secondAttribute="bottom" constant="8" id="KTU-3R-WXo"/>
-                                                <constraint firstItem="WHf-S2-gQ8" firstAttribute="centerY" secondItem="zkN-Ug-4oz" secondAttribute="centerY" multiplier="55/100" id="R3b-Lo-mGb"/>
+                                                <constraint firstItem="WHf-S2-gQ8" firstAttribute="centerY" secondItem="zkN-Ug-4oz" secondAttribute="centerY" multiplier="75/100" id="R3b-Lo-mGb"/>
                                                 <constraint firstItem="WHf-S2-gQ8" firstAttribute="leading" secondItem="zkN-Ug-4oz" secondAttribute="leading" constant="20" symbolic="YES" id="bPA-P9-T6I"/>
                                                 <constraint firstItem="0Ju-mg-Hms" firstAttribute="leading" secondItem="u3u-V1-hfc" secondAttribute="leading" id="fBW-3j-mcK"/>
                                                 <constraint firstItem="u3u-V1-hfc" firstAttribute="leading" secondItem="WHf-S2-gQ8" secondAttribute="leading" id="g2i-w4-He5"/>
@@ -304,6 +304,10 @@
                                     <constraint firstAttribute="trailing" secondItem="zkN-Ug-4oz" secondAttribute="trailing" id="kbR-0X-TYD"/>
                                 </constraints>
                                 <size key="customSize" width="200" height="100"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="WHf-S2-gQ8" id="kvp-2R-EZN"/>
+                                    <outlet property="subLabel" destination="u3u-V1-hfc" id="CKD-I6-v0i"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
