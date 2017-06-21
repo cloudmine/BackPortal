@@ -168,7 +168,17 @@ fileprivate extension ActiviesViewController {
     
     func assessmentCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssessmentActivityReuseIdentifier, for: indexPath)
-        return cell
+        
+        guard
+            let assessmentCell = cell as? AssessmentCell,
+            indexPath.row < assessmentEvents.count
+        else {
+            return cell
+        }
+        
+        assessmentCell.configure(with: assessmentEvents[indexPath.row], tapBack: nil)
+        
+        return assessmentCell
     }
 }
 

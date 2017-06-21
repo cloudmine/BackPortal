@@ -255,7 +255,7 @@
                                     <outlet property="subLabel" destination="6y7-EJ-zGK" id="epz-g5-F8F"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssessmentCell" id="PMu-li-Vx0">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssessmentCell" id="PMu-li-Vx0" customClass="AssessmentCell" customModule="BackPortal" customModuleProvider="target">
                                 <rect key="frame" x="251.5" y="0.0" width="200" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

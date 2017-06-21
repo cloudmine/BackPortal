@@ -1,6 +1,8 @@
 import UIKit
 import CareKit
 
+let ActivityCellCornerRadius = 6.0 as CGFloat
+
 typealias InterventionEventTapCallback = (OCKCarePlanEvent) -> Void
 
 class InterventionCell: UICollectionViewCell {
@@ -29,7 +31,7 @@ class InterventionCell: UICollectionViewCell {
         onMain {
             self.resetStackView()
             
-            self.layer.cornerRadius = 6.0
+            self.layer.cornerRadius = ActivityCellCornerRadius
             
             self.nameLabel?.text = activity.title
             self.subLabel?.text = activity.text
