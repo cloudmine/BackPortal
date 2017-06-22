@@ -1,5 +1,6 @@
 import UIKit
-import CareKit.NSDateComponents_CarePlan
+import CareKit
+import ResearchKit
 
 fileprivate let InterventionActivityReuseIdentifier = "InterventionCell"
 fileprivate let AssessmentActivityReuseIdentifier = "AssessmentCell"
@@ -92,6 +93,30 @@ extension ActiviesViewController {
     }
 }
 
+// MARK: UICollectionViewDelegate
+
+extension ActiviesViewController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard
+            1 == indexPath.section,
+            indexPath.row < assessmentEvents.count,
+            let taskVC = taskViewController(for: assessmentEvents[indexPath.row].first)
+        else {
+            return
+        }
+        
+        present(taskVC, animated: true, completion: nil)
+    }
+}
+
+extension ActiviesViewController: ORKTaskViewControllerDelegate {
+    
+    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK: Private Helpers
 
 fileprivate extension ActiviesViewController {
@@ -180,6 +205,23 @@ fileprivate extension ActiviesViewController {
         
         return assessmentCell
     }
+    
+    func taskViewController(for assessmentEvent: OCKCarePlanEvent?) -> ORKTaskViewController? {
+        guard
+            let assessmentEvent = assessmentEvent,
+            case .assessment = assessmentEvent.activity.type,
+            let task = AssessmentTasks.taskFor(identifier: assessmentEvent.activity.identifier)
+        else {
+            return nil
+        }
+        
+        let taskVC = ORKTaskViewController(task: task, taskRun: nil)
+        taskVC.modalPresentationStyle = .formSheet
+        taskVC.showsProgressInNavigationBar = false
+        taskVC.delegate = self
+        
+        return taskVC
+    }
 }
 
 fileprivate func toggledState(for event: OCKCarePlanEvent) -> OCKCarePlanEventState {
@@ -192,36 +234,3 @@ fileprivate func toggledState(for event: OCKCarePlanEvent) -> OCKCarePlanEventSt
         return .completed
     }
 }
-
-// MARK: UICollectionViewDelegate
-
-//extension ActiviesViewController {
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-//}
