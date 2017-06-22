@@ -11,8 +11,8 @@ class ActiviesViewController: UICollectionViewController {
     
     fileprivate var interventionEvents: [[OCKCarePlanEvent]] = []
     fileprivate var assessmentEvents: [[OCKCarePlanEvent]] = []
-    fileprivate var lastRenderedBounds: CGRect?
-    
+    fileprivate var lastRenderedBounds: CGRect? = nil
+    fileprivate var lastSelectedAssessment: OCKCarePlanEvent? = nil
     
     // MARK: Lifecycle
 
@@ -78,17 +78,23 @@ extension ActiviesViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0: return interventionEvents.count
-        case 1: return assessmentEvents.count
-        default: return 0
+        case 0:
+            return interventionEvents.count
+        case 1:
+            return assessmentEvents.count
+        default:
+            return 0
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case 0: return interventionCell(from: collectionView, at: indexPath)
-        case 1: return assessmentCell(from: collectionView, at: indexPath)
-        default: fatalError()
+        case 0:
+            return interventionCell(from: collectionView, at: indexPath)
+        case 1:
+            return assessmentCell(from: collectionView, at: indexPath)
+        default:
+            fatalError()
         }
     }
 }
@@ -106,6 +112,7 @@ extension ActiviesViewController {
             return
         }
         
+        lastSelectedAssessment = assessmentEvents[indexPath.row].first
         present(taskVC, animated: true, completion: nil)
     }
 }
@@ -113,7 +120,47 @@ extension ActiviesViewController {
 extension ActiviesViewController: ORKTaskViewControllerDelegate {
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        dismiss(animated: true, completion: nil)
+        defer {
+            dismiss(animated: true, completion: nil)
+        }
+        
+        guard
+            case .completed = reason,
+            let event = lastSelectedAssessment,
+            let stepResult = taskViewController.result.firstResult as? ORKStepResult
+        else {
+            return
+        }
+        
+        if let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
+           let scaleAnswer = scaleResult.scaleAnswer
+        {
+            let eventResult = OCKCarePlanEventResult(valueString: scaleAnswer.stringValue, unitString: NSLocalizedString("out of 10", comment: ""), userInfo: nil)
+            
+            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
+                guard nil == error else {
+                    print("[PORTAL] Error Updating Assessment Event: \(error!)")
+                    return
+                }
+                
+                self?.updateData(on: Date())
+            }
+        } else if
+            let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
+            let weightAnswer = weightResult.numericAnswer,
+            let weightUnit = weightResult.unit
+        {
+            let eventResult = OCKCarePlanEventResult(valueString: weightAnswer.stringValue, unitString: weightUnit, userInfo: nil)
+            
+            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
+                guard nil == error else {
+                    print("[PORTAL] Error Updating Assessment Event \(error!)")
+                    return
+                }
+                
+                self?.updateData(on: Date())
+            }
+        }
     }
 }
 
