@@ -124,15 +124,11 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
             dismiss(animated: true, completion: nil)
         }
         
-        guard
-            case .completed = reason,
-            let event = lastSelectedAssessment,
-            let stepResult = taskViewController.result.firstResult as? ORKStepResult
-        else {
+        guard case .completed = reason else {
             return
         }
         
-        updateAssessment(event: event, withResults: stepResult)
+        updateAssessment(event: lastSelectedAssessment, withResult: taskViewController.result)
     }
 }
 
@@ -191,37 +187,68 @@ fileprivate extension ActiviesViewController {
         }
     }
     
-    func updateAssessment(event: OCKCarePlanEvent, withResults stepResult: ORKStepResult) {
-        if
-            let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
-            let scaleAnswer = scaleResult.scaleAnswer
-        {
-            let eventResult = OCKCarePlanEventResult(valueString: scaleAnswer.stringValue, unitString: NSLocalizedString("out of 10", comment: ""), userInfo: nil)
+    func updateAssessment(event: OCKCarePlanEvent?, withResult taskResult: ORKTaskResult?) {
+        guard
+            let taskResult = taskResult,
+            let event = lastSelectedAssessment,
+            let eventResult = eventResult(from: taskResult)
+        else {
+            return
+        }
+        
             
-            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
-                guard nil == error else {
-                    print("[PORTAL] Error Updating Assessment Event: \(error!)")
-                    return
-                }
-                
-                self?.updateData(on: Date())
+        selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
+            guard nil == error else {
+                print("[PORTAL] Error Updating Assessment Event: \(error!)")
+                return
             }
-        } else if
+            
+            self?.updateData(on: Date())
+        }
+    }
+    
+    func eventResult(from taskResult: ORKTaskResult) -> OCKCarePlanEventResult? {
+        guard let stepResult = taskResult.firstResult as? ORKStepResult else {
+            return nil
+        }
+        
+        switch taskResult.identifier {
+        case AssessmentTasks.WeightIdentifier:
+            return weightResult(from: stepResult)
+        case AssessmentTasks.MoodIdentifier:
+            return scaleResult(from: stepResult)
+        case AssessmentTasks.PainIdentifier:
+            return scaleResult(from: stepResult)
+        default:
+            return nil
+        }
+    }
+    
+    func weightResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
+        guard
             let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
             let weightAnswer = weightResult.numericAnswer,
             let weightUnit = weightResult.unit
-        {
-            let eventResult = OCKCarePlanEventResult(valueString: weightAnswer.stringValue, unitString: weightUnit, userInfo: nil)
-            
-            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
-                guard nil == error else {
-                    print("[PORTAL] Error Updating Assessment Event \(error!)")
-                    return
-                }
-                
-                self?.updateData(on: Date())
-            }
+        else {
+            return nil
         }
+        
+        return OCKCarePlanEventResult(valueString: weightAnswer.stringValue,
+                                      unitString: weightUnit,
+                                      userInfo: nil)
+    }
+    
+    func scaleResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
+        guard
+            let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
+            let scaleAnswer = scaleResult.scaleAnswer
+        else {
+            return nil
+        }
+        
+        return OCKCarePlanEventResult(valueString: scaleAnswer.stringValue,
+                                      unitString: NSLocalizedString("out of 10", comment: ""),
+                                      userInfo: nil)
     }
     
     func interventionCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
