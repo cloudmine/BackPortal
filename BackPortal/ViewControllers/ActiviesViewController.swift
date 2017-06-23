@@ -132,35 +132,7 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
             return
         }
         
-        if let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
-           let scaleAnswer = scaleResult.scaleAnswer
-        {
-            let eventResult = OCKCarePlanEventResult(valueString: scaleAnswer.stringValue, unitString: NSLocalizedString("out of 10", comment: ""), userInfo: nil)
-            
-            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
-                guard nil == error else {
-                    print("[PORTAL] Error Updating Assessment Event: \(error!)")
-                    return
-                }
-                
-                self?.updateData(on: Date())
-            }
-        } else if
-            let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
-            let weightAnswer = weightResult.numericAnswer,
-            let weightUnit = weightResult.unit
-        {
-            let eventResult = OCKCarePlanEventResult(valueString: weightAnswer.stringValue, unitString: weightUnit, userInfo: nil)
-            
-            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
-                guard nil == error else {
-                    print("[PORTAL] Error Updating Assessment Event \(error!)")
-                    return
-                }
-                
-                self?.updateData(on: Date())
-            }
-        }
+        updateAssessment(event: event, withResults: stepResult)
     }
 }
 
@@ -216,6 +188,39 @@ fileprivate extension ActiviesViewController {
             }
             
             self?.updateData(on: Date())
+        }
+    }
+    
+    func updateAssessment(event: OCKCarePlanEvent, withResults stepResult: ORKStepResult) {
+        if
+            let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
+            let scaleAnswer = scaleResult.scaleAnswer
+        {
+            let eventResult = OCKCarePlanEventResult(valueString: scaleAnswer.stringValue, unitString: NSLocalizedString("out of 10", comment: ""), userInfo: nil)
+            
+            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
+                guard nil == error else {
+                    print("[PORTAL] Error Updating Assessment Event: \(error!)")
+                    return
+                }
+                
+                self?.updateData(on: Date())
+            }
+        } else if
+            let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
+            let weightAnswer = weightResult.numericAnswer,
+            let weightUnit = weightResult.unit
+        {
+            let eventResult = OCKCarePlanEventResult(valueString: weightAnswer.stringValue, unitString: weightUnit, userInfo: nil)
+            
+            selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
+                guard nil == error else {
+                    print("[PORTAL] Error Updating Assessment Event \(error!)")
+                    return
+                }
+                
+                self?.updateData(on: Date())
+            }
         }
     }
     
