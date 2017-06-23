@@ -53,6 +53,8 @@ extension PatientDetailViewController {
         
         let datePicker = UIDatePicker(frame: datePickerView.frame)
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.setDate(lastSelectedDate, animated: false)
         datePicker.addTarget(self, action: #selector(selectedDate(from:)), for: .valueChanged)
         
         datePickerView.addSubview(datePicker)
