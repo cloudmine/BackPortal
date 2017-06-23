@@ -6,7 +6,7 @@ class PatientDetailViewController: UIViewController {
     
     @IBOutlet var dateButton: UIBarButtonItem?
     
-    // MARK: Private Variables
+    // MARK: Private Properties
     
     fileprivate static var formatter: DateFormatter = {
         let df = DateFormatter()
@@ -14,7 +14,9 @@ class PatientDetailViewController: UIViewController {
         return df
     }()
     
-    fileprivate var lastSelectedDate: Date = Date()
+    // MARK: Public Properties
+    
+    fileprivate(set) var lastSelectedDate: Date = Date()
 
     // MARK: Lifecycle
     
@@ -69,10 +71,21 @@ extension PatientDetailViewController {
 extension PatientDetailViewController: UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        print("[PORTAL] Date Picked: \(lastSelectedDate)")
+        activitiesViewController?.reloadData()
         
         onMain {
             self.dateButton?.title = PatientDetailViewController.formatter.string(from: self.lastSelectedDate)
         }
+    }
+}
+
+// MARK: Private Helpers
+
+private extension PatientDetailViewController {
+    
+    var activitiesViewController: ActiviesViewController? {
+        return childViewControllers
+                .flatMap({ $0 as? ActiviesViewController })
+                .first
     }
 }

@@ -25,7 +25,7 @@ class ActiviesViewController: UICollectionViewController {
         super.viewDidAppear(animated)
         print("[PORTAL] Activies Collection Appeared")
         
-        updateData(on: Date())
+        reloadData()
         lastRenderedBounds = collectionView?.bounds
     }
     
@@ -38,6 +38,44 @@ class ActiviesViewController: UICollectionViewController {
         
         lastRenderedBounds = collectionView?.bounds
         collectionView?.collectionViewLayout.invalidateLayout()
+    }
+}
+
+// MARK: Public
+
+extension ActiviesViewController {
+    
+    func reloadData() {
+        guard
+            let patient = selectedPatient,
+            let date = selectedDate
+        else {
+            return
+        }
+        
+        let todayComponents = NSDateComponents(date: date, calendar: Calendar.current) as DateComponents
+        
+        patient.store.events(onDate: todayComponents, type: .intervention) { (interventions, interventionError) in
+            guard nil == interventionError else {
+                print("[PORTAL] Error getting interventions: \(interventionError!)")
+                return
+            }
+            
+            patient.store.events(onDate: todayComponents, type: .assessment) { (assessments, assessmentError) in
+                guard nil == assessmentError else {
+                    print("[PORTAL] Error getting assessments: \(assessmentError!)")
+                    return
+                }
+                
+                
+                self.interventionEvents = interventions
+                self.assessmentEvents = assessments
+                
+                onMain {
+                    self.collectionView?.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -140,34 +178,8 @@ fileprivate extension ActiviesViewController {
         return patientSplitViewController?.patientListViewController?.selectedPatient
     }
     
-    func updateData(on date: Date) {
-        guard let patient = selectedPatient else {
-            return
-        }
-        
-        let todayComponents = NSDateComponents(date: date, calendar: Calendar.current) as DateComponents
-        
-        patient.store.events(onDate: todayComponents, type: .intervention) { (interventions, interventionError) in
-            guard nil == interventionError else {
-                print("[PORTAL] Error getting interventions: \(interventionError!)")
-                return
-            }
-            
-            patient.store.events(onDate: todayComponents, type: .assessment) { (assessments, assessmentError) in
-                guard nil == assessmentError else {
-                    print("[PORTAL] Error getting assessments: \(assessmentError!)")
-                    return
-                }
-                
-                
-                self.interventionEvents = interventions
-                self.assessmentEvents = assessments
-                
-                onMain {
-                    self.collectionView?.reloadData()
-                }
-            }
-        }
+    var selectedDate: Date? {
+        return (parent as? PatientDetailViewController)?.lastSelectedDate
     }
     
     func toggle(interventionEvent event: OCKCarePlanEvent) {
@@ -183,7 +195,7 @@ fileprivate extension ActiviesViewController {
                 return
             }
             
-            self?.updateData(on: Date())
+            self?.reloadData()
         }
     }
     
@@ -203,7 +215,7 @@ fileprivate extension ActiviesViewController {
                 return
             }
             
-            self?.updateData(on: Date())
+            self?.reloadData()
         }
     }
     
