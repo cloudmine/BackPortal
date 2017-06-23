@@ -8,6 +8,12 @@ class PatientDetailViewController: UIViewController {
     
     // MARK: Private Variables
     
+    fileprivate static var formatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "MMMM d, yyyy"
+        return df
+    }()
+    
     fileprivate var lastSelectedDate: Date = Date()
 
     // MARK: Lifecycle
@@ -64,5 +70,9 @@ extension PatientDetailViewController: UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         print("[PORTAL] Date Picked: \(lastSelectedDate)")
+        
+        onMain {
+            self.dateButton?.title = PatientDetailViewController.formatter.string(from: self.lastSelectedDate)
+        }
     }
 }
