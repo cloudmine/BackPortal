@@ -187,7 +187,7 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
         }
         
         if let newActivity = NewActitiviesTasks.carePlanActivity(from: taskViewController.result) {
-            print("[PORTAL] Created a new activity from ResearchKit Results: \(newActivity)")
+            insert(activity: newActivity)
         } else {
             updateAssessment(event: lastSelectedAssessment, withResult: taskViewController.result)
         }
@@ -219,6 +219,17 @@ fileprivate extension ActiviesViewController {
         return (parent as? PatientDetailViewController)?.lastSelectedDate
     }
     
+    func insert(activity: OCKCarePlanActivity) {
+        selectedPatient?.store.add(activity, completion: { [weak self] (success, error) in
+            guard success else {
+                print("[PORTAL] Error updating store: \(error!.localizedDescription)")
+                return
+            }
+            
+            self?.reloadData()
+        })
+    }
+    
     func toggle(interventionEvent event: OCKCarePlanEvent) {
         guard case .intervention = event.activity.type else {
             return
@@ -244,7 +255,6 @@ fileprivate extension ActiviesViewController {
         else {
             return
         }
-        
             
         selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
             guard nil == error else {
