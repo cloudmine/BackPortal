@@ -3,6 +3,8 @@ import CareKit
 
 struct NewActitiviesTasks {
     
+    // MARK: Public
+    
     static var AddInterventionTask: ORKOrderedTask {
         let steps = [ExerciseNameQuestion, ExerciseTimeQuestion,
                      ExerciseDaysQuestion, ExerciseRepetitionsQuestion,
@@ -12,9 +14,8 @@ struct NewActitiviesTasks {
                               steps: steps)
     }
     
-    static func carePlanActivity(from result:ORKTaskResult?) -> OCKCarePlanActivity? {
+    static func carePlanActivity(from result:ORKTaskResult) -> OCKCarePlanActivity? {
         guard
-            let result = result,
             "PortalAddInterventionActivity" == result.identifier,
             let title = title(from: result)
         else {
@@ -39,28 +40,13 @@ struct NewActitiviesTasks {
                                    userInfo: nil)
     }
     
-    private static func title(from taskResult: ORKTaskResult) -> String? {
-        guard let results = taskResult.results else {
-            return nil
-        }
-        
-        return results
-                .flatMap({ $0 as? ORKStepResult })
-                .flatMap({ (stepResult) -> ORKTextQuestionResult? in
-                    guard
-                        let textResult = stepResult.firstResult as? ORKTextQuestionResult,
-                        textResult.identifier == "PortalAddExerciseName"
-                    else {
-                            return nil
-                    }
-                    
-                    return textResult
-                })
-                .first?
-                .textAnswer
-    }
+}
+
+// MARK: ResearcKit Step Factories
+
+fileprivate extension NewActitiviesTasks {
     
-    private static var ExerciseNameQuestion: ORKQuestionStep {
+    static var ExerciseNameQuestion: ORKQuestionStep {
         let answer = ORKTextAnswerFormat(maximumLength: 50)
         
         let question = ORKQuestionStep(identifier: "PortalAddExerciseName",
@@ -72,7 +58,7 @@ struct NewActitiviesTasks {
         return question
     }
     
-    private static var ExerciseTimeQuestion: ORKQuestionStep {
+    static var ExerciseTimeQuestion: ORKQuestionStep {
         let answer = ORKNumericAnswerFormat(style: .integer,
                                             unit: NSLocalizedString("minutes", comment: ""),
                                             minimum: NSNumber(value: 1),
@@ -87,7 +73,7 @@ struct NewActitiviesTasks {
         return question
     }
     
-    private static var ExerciseDaysQuestion: ORKQuestionStep {
+    static var ExerciseDaysQuestion: ORKQuestionStep {
         let choices = [ORKTextChoice(text: NSLocalizedString("Monday", comment: ""), value: "M" as NSString),
                        ORKTextChoice(text: NSLocalizedString("Tuesday", comment: ""), value: "T" as NSString),
                        ORKTextChoice(text: NSLocalizedString("Wednesday", comment: ""), value: "W" as NSString),
@@ -109,7 +95,7 @@ struct NewActitiviesTasks {
         return question
     }
     
-    private static var ExerciseRepetitionsQuestion: ORKQuestionStep {
+    static var ExerciseRepetitionsQuestion: ORKQuestionStep {
         let answer = ORKNumericAnswerFormat(style: .integer,
                                             unit: nil,
                                             minimum: NSNumber(value: 1),
@@ -124,7 +110,7 @@ struct NewActitiviesTasks {
         return question
     }
     
-    private static var ExerciseInstructionsQuestion: ORKQuestionStep {
+    static var ExerciseInstructionsQuestion: ORKQuestionStep {
         let answer = ORKTextAnswerFormat(maximumLength: 300)
         
         let question = ORKQuestionStep(identifier: "PortalAddExerciseInstructions",
@@ -134,5 +120,39 @@ struct NewActitiviesTasks {
         question.isOptional = true
         
         return question
+    }
+}
+
+// MARK: OCKCarePlanActivity Extraction
+
+fileprivate extension NewActitiviesTasks {
+    
+    static func title(from taskResult: ORKTaskResult) -> String? {
+        return
+            extract(from: taskResult, identifier: "PortalAddExerciseName", extractor: { (textResult: ORKTextQuestionResult)in
+                return textResult.textAnswer
+            })
+    }
+    
+    static func extract<T: ORKQuestionResult, U>(from taskResult: ORKTaskResult, identifier: String, extractor: (T) -> (U?)) -> U? {
+        guard let results = taskResult.results else {
+            return nil
+        }
+        
+        guard let questionResult = results
+            .flatMap({ $0 as? ORKStepResult })
+            .flatMap({ (stepResult) -> T? in
+                guard
+                    let questionResult = stepResult.firstResult as? T,
+                    questionResult.identifier == identifier
+                    else {
+                        return nil
+                }
+                
+                return questionResult
+            })
+            .first else { return nil }
+        
+        return extractor(questionResult)
     }
 }
