@@ -76,7 +76,7 @@ extension PatientDetailViewController: UIPopoverPresentationControllerDelegate {
         activitiesViewController?.reloadData()
         
         onMain {
-            self.dateButton?.title = PatientDetailViewController.formatter.string(from: self.lastSelectedDate)
+            self.dateButton?.title = PatientDetailViewController.description(of: self.lastSelectedDate)
         }
     }
 }
@@ -89,5 +89,15 @@ private extension PatientDetailViewController {
         return childViewControllers
                 .flatMap({ $0 as? ActiviesViewController })
                 .first
+    }
+    
+    static func description(of date: Date) -> String {
+        if date.isToday {
+            return NSLocalizedString("Today", comment: "")
+        } else if date.isYesterday {
+            return NSLocalizedString("Yesterday", comment: "")
+        }
+        
+        return self.formatter.string(from: date)
     }
 }
