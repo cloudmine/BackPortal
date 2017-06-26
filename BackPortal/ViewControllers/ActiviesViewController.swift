@@ -126,8 +126,21 @@ extension ActiviesViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard UICollectionElementKindSectionHeader == kind else {
+            fatalError("Footers not implemented in collection view")
+        }
+        
         let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ActivitiesSectionHeader", for: indexPath)
-        return reusableView
+        
+        guard
+            let header = reusableView as? ActivitiesHeader,
+            let type = ActivitiesHeaderType(rawValue: indexPath.section)
+        else {
+            return reusableView
+        }
+        
+        header.configure(as: type)
+        return header
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

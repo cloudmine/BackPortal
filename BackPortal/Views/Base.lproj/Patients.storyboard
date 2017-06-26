@@ -197,19 +197,19 @@
         <scene sceneID="UPg-2c-7Uc">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="0eu-cO-tCq" customClass="ActiviesViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="4XY-SU-o9U">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4XY-SU-o9U">
                         <rect key="frame" x="0.0" y="0.0" width="702.5" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qhC-4l-en9">
                             <size key="itemSize" width="200" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="75"/>
+                            <size key="headerReferenceSize" width="0.0" height="44"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InterventionCell" id="vGn-ne-mFl" customClass="InterventionCell" customModule="BackPortal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="75" width="200" height="100"/>
+                                <rect key="frame" x="0.0" y="44" width="200" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
@@ -264,7 +264,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssessmentCell" id="PMu-li-Vx0" customClass="AssessmentCell" customModule="BackPortal" customModuleProvider="target">
-                                <rect key="frame" x="251.5" y="75" width="200" height="100"/>
+                                <rect key="frame" x="251.5" y="44" width="200" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
@@ -337,24 +337,38 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivitiesSectionHeader" id="rt5-Md-LSf">
-                            <rect key="frame" x="0.0" y="0.0" width="702.5" height="75"/>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivitiesSectionHeader" id="rt5-Md-LSf" customClass="ActivitiesHeader" customModule="BackPortal" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="702.5" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYM-kB-3kh" userLabel="Content View">
-                                    <rect key="frame" x="0.0" y="0.0" width="703" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="703" height="44"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s6-wO-g9O">
-                                            <rect key="frame" x="20" y="27" width="119" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interventions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s6-wO-g9O">
+                                            <rect key="frame" x="20" y="9" width="131.5" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0G-wK-QMm">
+                                            <rect key="frame" x="659" y="0.0" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="Vd0-60-aXI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="38"/>
+                                            <state key="normal" title="+"/>
+                                            <connections>
+                                                <action selector="didPressWithAddButton:" destination="rt5-Md-LSf" eventType="touchUpInside" id="KoG-3v-DHz"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="0s6-wO-g9O" firstAttribute="leading" secondItem="MYM-kB-3kh" secondAttribute="leading" constant="20" symbolic="YES" id="13E-eD-FZL"/>
+                                        <constraint firstItem="l0G-wK-QMm" firstAttribute="top" secondItem="MYM-kB-3kh" secondAttribute="top" id="fN3-7H-ehY"/>
+                                        <constraint firstAttribute="bottom" secondItem="l0G-wK-QMm" secondAttribute="bottom" id="heH-Vw-3QP"/>
                                         <constraint firstItem="0s6-wO-g9O" firstAttribute="centerY" secondItem="MYM-kB-3kh" secondAttribute="centerY" id="hnd-0p-kHP"/>
+                                        <constraint firstAttribute="trailing" secondItem="l0G-wK-QMm" secondAttribute="trailing" id="kmb-T3-Fxr"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -364,6 +378,10 @@
                                 <constraint firstItem="MYM-kB-3kh" firstAttribute="top" secondItem="rt5-Md-LSf" secondAttribute="top" id="Px7-WX-GbQ"/>
                                 <constraint firstItem="MYM-kB-3kh" firstAttribute="leading" secondItem="rt5-Md-LSf" secondAttribute="leading" id="myM-Mi-awx"/>
                             </constraints>
+                            <connections>
+                                <outlet property="addButton" destination="l0G-wK-QMm" id="BC1-lA-y4S"/>
+                                <outlet property="titleLabel" destination="0s6-wO-g9O" id="jvP-ai-yZy"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="0eu-cO-tCq" id="Z4k-zh-Wjj"/>
