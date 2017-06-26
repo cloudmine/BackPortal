@@ -186,7 +186,11 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
             return
         }
         
-        updateAssessment(event: lastSelectedAssessment, withResult: taskViewController.result)
+        if let newActivity = NewActitiviesTasks.carePlanActivity(from: taskViewController.result) {
+            print("[PORTAL] Created a new activity from ResearchKit Results: \(newActivity)")
+        } else {
+            updateAssessment(event: lastSelectedAssessment, withResult: taskViewController.result)
+        }
     }
 }
 

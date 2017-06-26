@@ -1,4 +1,5 @@
 import ResearchKit
+import CareKit
 
 struct NewActitiviesTasks {
     
@@ -9,6 +10,54 @@ struct NewActitiviesTasks {
         
         return ORKOrderedTask(identifier: "PortalAddInterventionActivity",
                               steps: steps)
+    }
+    
+    static func carePlanActivity(from result:ORKTaskResult?) -> OCKCarePlanActivity? {
+        guard
+            let result = result,
+            "PortalAddInterventionActivity" == result.identifier,
+            let title = title(from: result)
+        else {
+            return nil
+        }
+        
+        let todayComponents = NSDateComponents(date: Date(), calendar: Calendar.current) as DateComponents
+        let schedule = OCKCareSchedule.weeklySchedule(withStartDate: todayComponents,
+                                                      occurrencesOnEachDay: [1, 1, 1, 1, 1, 1, 1])
+        let identifier = "BCM\(title)InterventionActivity"
+        
+        return OCKCarePlanActivity(identifier: identifier,
+                                   groupIdentifier: nil,
+                                   type: .intervention,
+                                   title: title,
+                                   text: nil,
+                                   tintColor: nil,
+                                   instructions: nil,
+                                   imageURL: nil,
+                                   schedule: schedule,
+                                   resultResettable: true,
+                                   userInfo: nil)
+    }
+    
+    private static func title(from taskResult: ORKTaskResult) -> String? {
+        guard let results = taskResult.results else {
+            return nil
+        }
+        
+        return results
+                .flatMap({ $0 as? ORKStepResult })
+                .flatMap({ (stepResult) -> ORKTextQuestionResult? in
+                    guard
+                        let textResult = stepResult.firstResult as? ORKTextQuestionResult,
+                        textResult.identifier == "PortalAddExerciseName"
+                    else {
+                            return nil
+                    }
+                    
+                    return textResult
+                })
+                .first?
+                .textAnswer
     }
     
     private static var ExerciseNameQuestion: ORKQuestionStep {
