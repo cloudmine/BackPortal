@@ -5,7 +5,17 @@ enum ActivitiesHeaderType: Int {
     case assessment = 1
 }
 
+protocol ActivitiesHeaderDelegate: class {
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType)
+}
+
+
 class ActivitiesHeader: UICollectionReusableView {
+    
+    // MARK: Private Properties
+    
+    fileprivate var type: ActivitiesHeaderType? = nil
+    fileprivate weak var delegate: ActivitiesHeaderDelegate? = nil
     
     // MARK: Outlets
     
@@ -14,7 +24,10 @@ class ActivitiesHeader: UICollectionReusableView {
     
     // MARK: Public
     
-    func configure(as type: ActivitiesHeaderType) {
+    func configure(as type: ActivitiesHeaderType, delegate: ActivitiesHeaderDelegate) {
+        self.type = type
+        self.delegate = delegate
+        
         if case .intervention = type {
             titleLabel?.text = NSLocalizedString("Interventions", comment: "")
             addButton?.isHidden = false
@@ -31,6 +44,10 @@ class ActivitiesHeader: UICollectionReusableView {
 extension ActivitiesHeader {
     
     @IBAction func didPress(addButton: UIButton) {
-        print("[PORTAL] Add Interventions")
+        guard let type = type else {
+            return
+        }
+        
+        delegate?.activitiesHeader(self, didSelectAddFor: type)
     }
 }

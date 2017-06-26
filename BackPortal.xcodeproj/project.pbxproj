@@ -38,6 +38,7 @@
 		B46FEA1E1EFC15C100F9D09E /* AssessmentTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46FEA1D1EFC15C100F9D09E /* AssessmentTasks.swift */; };
 		B499F9EC1F01568900A76098 /* Date+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9EB1F01568900A76098 /* Date+Portal.swift */; };
 		B499F9EE1F016D8000A76098 /* ActivitiesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9ED1F016D8000A76098 /* ActivitiesHeader.swift */; };
+		B499F9F01F0179CE00A76098 /* NewActivityTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9EF1F0179CE00A76098 /* NewActivityTasks.swift */; };
 		B4C2BE1C1EF823D200E70A31 /* ActiviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */; };
 		B4C2BE1E1EF8328100E70A31 /* PatientDetailNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */; };
 		E3E647F8FB412EE4983BFCCF /* Pods_BackPortalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9CB4F026613D1FC355F9B5 /* Pods_BackPortalUITests.framework */; };
@@ -100,6 +101,7 @@
 		B46FEA1D1EFC15C100F9D09E /* AssessmentTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentTasks.swift; sourceTree = "<group>"; };
 		B499F9EB1F01568900A76098 /* Date+Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Portal.swift"; sourceTree = "<group>"; };
 		B499F9ED1F016D8000A76098 /* ActivitiesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesHeader.swift; sourceTree = "<group>"; };
+		B499F9EF1F0179CE00A76098 /* NewActivityTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityTasks.swift; sourceTree = "<group>"; };
 		B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviesViewController.swift; sourceTree = "<group>"; };
 		B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailNavController.swift; sourceTree = "<group>"; };
 		B7D0E29578B809FC4C0276D6 /* Pods-BackPortalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				B46FEA1D1EFC15C100F9D09E /* AssessmentTasks.swift */,
+				B499F9EF1F0179CE00A76098 /* NewActivityTasks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				B46FEA1B1EFB03C900F9D09E /* AssessmentCell.swift in Sources */,
 				B45316591EF84F87004A8FD9 /* PatientMasterNavController.swift in Sources */,
 				B41DC0331EF3306900B7DAE9 /* PatientCell.swift in Sources */,
+				B499F9F01F0179CE00A76098 /* NewActivityTasks.swift in Sources */,
 				B499F9EE1F016D8000A76098 /* ActivitiesHeader.swift in Sources */,
 				B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */,
 				B41DC02F1EF325E600B7DAE9 /* PatientSplitViewController.swift in Sources */,

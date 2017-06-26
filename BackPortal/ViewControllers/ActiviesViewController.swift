@@ -139,7 +139,7 @@ extension ActiviesViewController {
             return reusableView
         }
         
-        header.configure(as: type)
+        header.configure(as: type, delegate: self)
         return header
     }
 
@@ -173,6 +173,8 @@ extension ActiviesViewController {
     }
 }
 
+// MARK: ORKTaskViewControllerDelegate
+
 extension ActiviesViewController: ORKTaskViewControllerDelegate {
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
@@ -185,6 +187,19 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
         }
         
         updateAssessment(event: lastSelectedAssessment, withResult: taskViewController.result)
+    }
+}
+
+// MARK: ActivitiesHeaderDelegate
+
+extension ActiviesViewController: ActivitiesHeaderDelegate {
+    
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType) {
+        let taskVC = ORKTaskViewController(task: NewActitiviesTasks.AddInterventionTask, taskRun: nil)
+        taskVC.modalPresentationStyle = .formSheet
+        taskVC.delegate = self
+        
+        present(taskVC, animated: true, completion: nil)
     }
 }
 
