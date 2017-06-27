@@ -5,13 +5,13 @@ struct NewActitiviesTasks {
     
     // MARK: Public
     
-    static var AddInterventionTask: ORKOrderedTask {
-        let steps = [ExerciseNameQuestion, ExerciseTimeQuestion,
-                     ExerciseDaysQuestion, ExerciseRepetitionsQuestion,
-                     ExerciseInstructionsQuestion]
-        
-        return ORKOrderedTask(identifier: "PortalAddInterventionActivity",
-                              steps: steps)
+    static func task(for subtype: ActivitySubtype) -> ORKOrderedTask {
+        switch subtype {
+        case .exercise:
+            return AddExerciseInterventionTask
+        case .medication:
+            fatalError() // TODO
+        }
     }
     
     static func carePlanActivity(from result:ORKTaskResult) -> OCKCarePlanActivity? {
@@ -54,6 +54,15 @@ struct NewActitiviesTasks {
 fileprivate extension NewActitiviesTasks {
     
     static let ExerciseActivityGroupIdentifier = "Exercises"
+    
+    static var AddExerciseInterventionTask: ORKOrderedTask {
+        let steps = [ExerciseNameQuestion, ExerciseTimeQuestion,
+                     ExerciseDaysQuestion, ExerciseRepetitionsQuestion,
+                     ExerciseInstructionsQuestion]
+        
+        return ORKOrderedTask(identifier: "PortalAddInterventionActivity",
+                              steps: steps)
+    }
     
     static let ExercieNameQuestionIdentifier = "PortalAddExerciseName"
     

@@ -1,8 +1,8 @@
 import UIKit
 
-enum InterventionActivitySubtype {
+enum ActivitySubtype {
     case exercise
-    case medicine
+    case medication
 }
 
 enum ActivitiesHeaderType: Int {
@@ -12,7 +12,7 @@ enum ActivitiesHeaderType: Int {
 
 protocol ActivitiesHeaderDelegate: class {
     func activitiesHeader(_ activitiesHeader: ActivitiesHeader, wantsToShowPopover viewController: UIViewController, from view: UIView)
-    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType)
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor subtype: ActivitySubtype)
 }
 
 
@@ -39,7 +39,7 @@ class ActivitiesHeader: UICollectionReusableView {
             addButton?.isHidden = false
         } else if case .assessment = type {
             titleLabel?.text = NSLocalizedString("Assessments", comment: "")
-            addButton?.isHidden = true
+            addButton?.isHidden = false
         }
     }
 }
@@ -52,9 +52,14 @@ extension ActivitiesHeader {
     @IBAction func didPress(addButton: UIButton) {
         guard
             let type = type,
-            let selectVC = UIStoryboard(name: "InterventionType", bundle: Bundle.main).instantiateInitialViewController()
+            case .intervention = type, // TODO: Implement assessment case
+            let selectVC = UIStoryboard(name: "InterventionType", bundle: Bundle.main).instantiateInitialViewController() as? InterventionTypeViewController
         else {
             return
+        }
+        
+        selectVC.selectionCallback = { subtype in
+            self.delegate?.activitiesHeader(self, didSelectAddFor: subtype)
         }
         
         delegate?.activitiesHeader(self, wantsToShowPopover: selectVC, from: addButton)

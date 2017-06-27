@@ -201,13 +201,18 @@ extension ActiviesViewController: ActivitiesHeaderDelegate {
     func activitiesHeader(_ activitiesHeader: ActivitiesHeader, wantsToShowPopover viewController: UIViewController, from view: UIView) {
         viewController.modalPresentationStyle = .popover
         viewController.popoverPresentationController?.sourceView = view
-        viewController.preferredContentSize = CGSize(width: 320, height: 250)
+        viewController.preferredContentSize = CGSize(width: 320, height: 175)
         
         present(viewController, animated: true, completion: nil)
     }
     
-    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType) {
-        let taskVC = ORKTaskViewController(task: NewActitiviesTasks.AddInterventionTask, taskRun: nil)
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor subtype: ActivitySubtype) {
+        if nil != presentedViewController {
+            dismiss(animated: false, completion: nil)
+        }
+        
+        let task = NewActitiviesTasks.task(for: subtype)
+        let taskVC = ORKTaskViewController(task: task, taskRun: nil)
         taskVC.modalPresentationStyle = .formSheet
         taskVC.delegate = self
         

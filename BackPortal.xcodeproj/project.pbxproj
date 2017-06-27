@@ -40,6 +40,7 @@
 		B499F9EC1F01568900A76098 /* Date+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9EB1F01568900A76098 /* Date+Portal.swift */; };
 		B499F9EE1F016D8000A76098 /* ActivitiesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9ED1F016D8000A76098 /* ActivitiesHeader.swift */; };
 		B499F9F01F0179CE00A76098 /* NewActivityTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499F9EF1F0179CE00A76098 /* NewActivityTasks.swift */; };
+		B4A17D121F02BE46004FD644 /* InterventionTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A17D111F02BE46004FD644 /* InterventionTypeViewController.swift */; };
 		B4C2BE1C1EF823D200E70A31 /* ActiviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */; };
 		B4C2BE1E1EF8328100E70A31 /* PatientDetailNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */; };
 		E3E647F8FB412EE4983BFCCF /* Pods_BackPortalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9CB4F026613D1FC355F9B5 /* Pods_BackPortalUITests.framework */; };
@@ -104,6 +105,7 @@
 		B499F9EB1F01568900A76098 /* Date+Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Portal.swift"; sourceTree = "<group>"; };
 		B499F9ED1F016D8000A76098 /* ActivitiesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesHeader.swift; sourceTree = "<group>"; };
 		B499F9EF1F0179CE00A76098 /* NewActivityTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityTasks.swift; sourceTree = "<group>"; };
+		B4A17D111F02BE46004FD644 /* InterventionTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterventionTypeViewController.swift; sourceTree = "<group>"; };
 		B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiviesViewController.swift; sourceTree = "<group>"; };
 		B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailNavController.swift; sourceTree = "<group>"; };
 		B7D0E29578B809FC4C0276D6 /* Pods-BackPortalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				B4C2BE1D1EF8328100E70A31 /* PatientDetailNavController.swift */,
 				B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */,
 				B4C2BE1B1EF823D200E70A31 /* ActiviesViewController.swift */,
+				B4A17D111F02BE46004FD644 /* InterventionTypeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				B4297EDD1EF2D1D300A0DE1F /* PortalAppDelegate.swift in Sources */,
 				B45316571EF84D46004A8FD9 /* UIViewController+Portal.swift in Sources */,
 				B45316531EF83E0A004A8FD9 /* PatientDetailViewController.swift in Sources */,
+				B4A17D121F02BE46004FD644 /* InterventionTypeViewController.swift in Sources */,
 				B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */,
 				B4C2BE1C1EF823D200E70A31 /* ActiviesViewController.swift in Sources */,
 				B41DC0311EF32A8B00B7DAE9 /* PatientListViewController.swift in Sources */,
