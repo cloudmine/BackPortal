@@ -204,18 +204,21 @@ fileprivate extension NewActitiviesTasks {
         }
         
         guard let questionResult = results
-            .flatMap({ $0 as? ORKStepResult })
-            .flatMap({ (stepResult) -> T? in
-                guard
-                    let questionResult = stepResult.firstResult as? T,
-                    questionResult.identifier == identifier
-                    else {
-                        return nil
-                }
-                
-                return questionResult
-            })
-            .first else { return nil }
+                                    .flatMap({ $0 as? ORKStepResult })
+                                    .flatMap({ (stepResult) -> T? in
+                                                guard
+                                                    let questionResult = stepResult.firstResult as? T,
+                                                    questionResult.identifier == identifier
+                                                else {
+                                                        return nil
+                                                }
+                                                
+                                                return questionResult
+                                            })
+                                    .first
+        else {
+            return nil
+        }
         
         return extractor(questionResult)
     }
