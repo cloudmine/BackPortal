@@ -10,13 +10,13 @@ struct NewActitiviesTasks {
         case .exercise:
             return AddExerciseInterventionTask
         case .medication:
-            fatalError() // TODO
+            return AddMedicationInterventionTask
         }
     }
     
     static func carePlanActivity(from result:ORKTaskResult) -> OCKCarePlanActivity? {
         guard
-            "PortalAddInterventionActivity" == result.identifier,
+            AddExerciseInterventionTaskIdentifier == result.identifier,
             let title = title(from: result),
             let repetitions = repetitions(from: result),
             let schedule = schedule(from: result, repetitions: repetitions)
@@ -46,12 +46,43 @@ struct NewActitiviesTasks {
                                    resultResettable: true,
                                    userInfo: nil)
     }
-    
 }
 
-// MARK: ResearcKit Step Factories
+// MARK: ResearchKit Medication Task Factory
 
 fileprivate extension NewActitiviesTasks {
+    
+    static let AddMedicationInterventionTaskIdentifier = "PortalAddMedicationInterventionActivity"
+    
+    static let MedicationActivityGroupIdentifier = "Medications"
+    
+    static var AddMedicationInterventionTask: ORKOrderedTask {
+        let steps = [MedicationNameQuestion]
+        
+        return ORKOrderedTask(identifier: AddMedicationInterventionTaskIdentifier,
+                              steps: steps)
+    }
+    
+    static let MedicationNameQuestionIdentifier = "PortalAddMedicationName"
+    
+    static var MedicationNameQuestion: ORKQuestionStep {
+        let answer = ORKTextAnswerFormat(maximumLength: 50)
+        
+        let question = ORKQuestionStep(identifier: ExercieNameQuestionIdentifier,
+                                       title: NSLocalizedString("Medication Name", comment: ""),
+                                       text: NSLocalizedString("Enter the name of medication the patient will take", comment: ""),
+                                       answer: answer)
+        question.isOptional = false
+        
+        return question
+    }
+}
+
+// MARK: ResearcKit Exercise Task Factory
+
+fileprivate extension NewActitiviesTasks {
+    
+    static let AddExerciseInterventionTaskIdentifier = "PortalAddExerciseInterventionActivity"
     
     static let ExerciseActivityGroupIdentifier = "Exercises"
     
@@ -60,7 +91,7 @@ fileprivate extension NewActitiviesTasks {
                      ExerciseDaysQuestion, ExerciseRepetitionsQuestion,
                      ExerciseInstructionsQuestion]
         
-        return ORKOrderedTask(identifier: "PortalAddInterventionActivity",
+        return ORKOrderedTask(identifier: AddExerciseInterventionTaskIdentifier,
                               steps: steps)
     }
     
