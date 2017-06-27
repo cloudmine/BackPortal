@@ -24,8 +24,13 @@ struct NewActitiviesTasks {
             return nil
         }
         
+        // NOTE: This would likely still break on various special characters
+        let strippedTitle = title
+                            .replacingOccurrences(of: " ", with: "-")
+                            .replacingOccurrences(of: "\t", with: "-")
+                            .replacingOccurrences(of: "\n", with: "-")
 
-        let identifier = "BCM\(title)InterventionActivity"
+        let identifier = "BCM\(strippedTitle)InterventionActivity"
         let instructions = self.instructions(from: result)
         let description = self.description(from: result)
         
