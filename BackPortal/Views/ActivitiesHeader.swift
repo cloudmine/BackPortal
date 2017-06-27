@@ -1,11 +1,17 @@
 import UIKit
 
+enum InterventionActivitySubtype {
+    case exercise
+    case medicine
+}
+
 enum ActivitiesHeaderType: Int {
     case intervention = 0
     case assessment = 1
 }
 
 protocol ActivitiesHeaderDelegate: class {
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, wantsToShowPopover viewController: UIViewController, from view: UIView)
     func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType)
 }
 
@@ -44,10 +50,13 @@ class ActivitiesHeader: UICollectionReusableView {
 extension ActivitiesHeader {
     
     @IBAction func didPress(addButton: UIButton) {
-        guard let type = type else {
+        guard
+            let type = type,
+            let selectVC = UIStoryboard(name: "InterventionType", bundle: Bundle.main).instantiateInitialViewController()
+        else {
             return
         }
         
-        delegate?.activitiesHeader(self, didSelectAddFor: type)
+        delegate?.activitiesHeader(self, wantsToShowPopover: selectVC, from: addButton)
     }
 }

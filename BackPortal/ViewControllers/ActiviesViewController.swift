@@ -198,6 +198,14 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
 
 extension ActiviesViewController: ActivitiesHeaderDelegate {
     
+    func activitiesHeader(_ activitiesHeader: ActivitiesHeader, wantsToShowPopover viewController: UIViewController, from view: UIView) {
+        viewController.modalPresentationStyle = .popover
+        viewController.popoverPresentationController?.sourceView = view
+        viewController.preferredContentSize = CGSize(width: 320, height: 250)
+        
+        present(viewController, animated: true, completion: nil)
+    }
+    
     func activitiesHeader(_ activitiesHeader: ActivitiesHeader, didSelectAddFor type: ActivitiesHeaderType) {
         let taskVC = ORKTaskViewController(task: NewActitiviesTasks.AddInterventionTask, taskRun: nil)
         taskVC.modalPresentationStyle = .formSheet
