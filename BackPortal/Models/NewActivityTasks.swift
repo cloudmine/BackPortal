@@ -30,11 +30,11 @@ struct NewActitiviesTasks {
         let description = self.description(from: result)
         
         return OCKCarePlanActivity(identifier: identifier,
-                                   groupIdentifier: nil,
+                                   groupIdentifier: ExerciseActivityGroupIdentifier,
                                    type: .intervention,
                                    title: title,
                                    text: description,
-                                   tintColor: nil,
+                                   tintColor: UIColor.orange,
                                    instructions: instructions,
                                    imageURL: nil,
                                    schedule: schedule,
@@ -47,6 +47,8 @@ struct NewActitiviesTasks {
 // MARK: ResearcKit Step Factories
 
 fileprivate extension NewActitiviesTasks {
+    
+    static let ExerciseActivityGroupIdentifier = "Exercises"
     
     static let ExercieNameQuestionIdentifier = "PortalAddExerciseName"
     
