@@ -325,10 +325,13 @@ fileprivate extension ActiviesViewController {
                 return cell
         }
         
-        interventionCell.configure(with: interventionEvents[indexPath.row]) { [weak self] event in
-            print("[PORTAL] Callback for event with occurrence: \(event.occurrenceIndexOfDay)")
-            
-            self?.toggle(interventionEvent: event)
+        interventionCell.configure(with: interventionEvents[indexPath.row]) { [weak self] action in
+            switch action {
+            case .toggle(let event):
+                self?.toggle(interventionEvent: event)
+            case .modify(let activity):
+                print("[PORTAL] Modify activity: \(activity)")
+            }
         }
         
         return interventionCell

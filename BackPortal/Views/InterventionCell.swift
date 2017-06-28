@@ -3,7 +3,12 @@ import CareKit
 
 let ActivityCellCornerRadius = 6.0 as CGFloat
 
-typealias InterventionEventTapCallback = (OCKCarePlanEvent) -> Void
+enum InterventionCellTapbackAction {
+    case toggle(OCKCarePlanEvent)
+    case modify(OCKCarePlanActivity)
+}
+
+typealias InterventionEventTapCallback = (InterventionCellTapbackAction) -> Void
 
 class InterventionCell: UICollectionViewCell {
     
@@ -17,6 +22,14 @@ class InterventionCell: UICollectionViewCell {
     
     fileprivate var events: [OCKCarePlanEvent] = []
     fileprivate var tapCallback: InterventionEventTapCallback? = nil
+    
+    // MARK: Override
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(gestureRecognizer:)))
+        self.contentView.addGestureRecognizer(longPress)
+    }
     
     // MARK: Public
     
@@ -52,6 +65,19 @@ class InterventionCell: UICollectionViewCell {
     }
 }
 
+// MARK: Target-Action
+
+fileprivate extension InterventionCell {
+    
+    @objc func didLongPress(gestureRecognizer: UILongPressGestureRecognizer) {      
+        guard let activity = events.first?.activity else {
+            return
+        }
+        
+        tapCallback?(.modify(activity))
+    }
+}
+
 // MARK: Private
 
 fileprivate extension InterventionCell {
@@ -82,7 +108,7 @@ fileprivate extension InterventionCell {
             return
         }
         
-        tapCallback?(events[eventButton.tag])
+        tapCallback?(.toggle(events[eventButton.tag]))
     }
     
     func resetStackView() {
