@@ -11,6 +11,11 @@ extension Date {
         return isSameDay(as: yesterDate)
     }
     
+    var isTomorrow: Bool {
+        let tomorrowDate = Date(timeInterval: 24*60*60, since: Date())
+        return isSameDay(as: tomorrowDate)
+    }
+    
     func isSameDay(as date: Date) -> Bool {
         let selfComponents = NSDateComponents(date: self, calendar: Calendar.current) as DateComponents
         let otherComponents = NSDateComponents(date: date, calendar: Calendar.current) as DateComponents

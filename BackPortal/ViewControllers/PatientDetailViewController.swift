@@ -53,7 +53,7 @@ extension PatientDetailViewController {
         
         let datePicker = UIDatePicker(frame: datePickerView.frame)
         datePicker.datePickerMode = .date
-        datePicker.maximumDate = Date()
+        //datePicker.maximumDate = Date()
         datePicker.setDate(lastSelectedDate, animated: false)
         datePicker.addTarget(self, action: #selector(selectedDate(from:)), for: .valueChanged)
         
@@ -96,6 +96,8 @@ private extension PatientDetailViewController {
             return NSLocalizedString("Today", comment: "")
         } else if date.isYesterday {
             return NSLocalizedString("Yesterday", comment: "")
+        } else if date.isTomorrow {
+            return NSLocalizedString("Tomorrow", comment: "")
         }
         
         return self.formatter.string(from: date)
