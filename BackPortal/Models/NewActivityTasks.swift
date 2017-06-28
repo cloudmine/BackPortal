@@ -14,37 +14,14 @@ struct NewActitiviesTasks {
         }
     }
     
-    static func carePlanActivity(from result:ORKTaskResult) -> OCKCarePlanActivity? {
-        guard
-            AddExerciseInterventionTaskIdentifier == result.identifier,
-            let title = title(from: result),
-            let repetitions = repetitions(from: result),
-            let schedule = schedule(from: result, repetitions: repetitions)
-        else {
+    static func carePlanActivity(from result: ORKTaskResult) -> OCKCarePlanActivity? {
+        if AddExerciseInterventionTaskIdentifier == result.identifier {
+            return exerciseCarePlanActivity(from: result)
+        } else if AddMedicationInterventionTaskIdentifier == result.identifier {
+            return medicationCarePlanActivity(from: result)
+        } else {
             return nil
         }
-        
-        // NOTE: This would likely still break on various special characters
-        let strippedTitle = title
-                            .replacingOccurrences(of: " ", with: "-")
-                            .replacingOccurrences(of: "\t", with: "-")
-                            .replacingOccurrences(of: "\n", with: "-")
-
-        let identifier = "BCM\(strippedTitle)InterventionActivity"
-        let instructions = self.instructions(from: result)
-        let description = self.description(from: result)
-        
-        return OCKCarePlanActivity(identifier: identifier,
-                                   groupIdentifier: ExerciseActivityGroupIdentifier,
-                                   type: .intervention,
-                                   title: title,
-                                   text: description,
-                                   tintColor: UIColor.orange,
-                                   instructions: instructions,
-                                   imageURL: nil,
-                                   schedule: schedule,
-                                   resultResettable: true,
-                                   userInfo: nil)
     }
 }
 
@@ -70,7 +47,7 @@ fileprivate extension NewActitiviesTasks {
     static var MedicationNameQuestion: ORKQuestionStep {
         let answer = ORKTextAnswerFormat(maximumLength: 50)
         
-        let question = ORKQuestionStep(identifier: ExercieNameQuestionIdentifier,
+        let question = ORKQuestionStep(identifier: MedicationNameQuestionIdentifier,
                                        title: NSLocalizedString("Medication Name", comment: ""),
                                        text: NSLocalizedString("Enter the name of medication the patient will take", comment: ""),
                                        answer: answer)
@@ -153,12 +130,12 @@ fileprivate extension NewActitiviesTasks {
                               steps: steps)
     }
     
-    static let ExercieNameQuestionIdentifier = "PortalAddExerciseName"
+    static let ExerciseNameQuestionIdentifier = "PortalAddExerciseName"
     
     static var ExerciseNameQuestion: ORKQuestionStep {
         let answer = ORKTextAnswerFormat(maximumLength: 50)
         
-        let question = ORKQuestionStep(identifier: ExercieNameQuestionIdentifier,
+        let question = ORKQuestionStep(identifier: ExerciseNameQuestionIdentifier,
                                            title: NSLocalizedString("Exercise Name", comment: ""),
                                            text: NSLocalizedString("Enter the title for this exercie activity", comment: ""),
                                            answer: answer)
@@ -254,39 +231,104 @@ fileprivate extension NewActitiviesTasks {
 
 fileprivate extension NewActitiviesTasks {
     
-    static func title(from taskResult: ORKTaskResult) -> String? {
+    static func exerciseCarePlanActivity(from result: ORKTaskResult) -> OCKCarePlanActivity? {
+        guard
+            AddExerciseInterventionTaskIdentifier == result.identifier,
+            let title = text(from: result, for: ExerciseNameQuestionIdentifier),
+            let repetitions = repetitions(from: result, for: ExerciseRepetitionsQuestionIdentifier),
+            let schedule = schedule(from: result, repetitions: repetitions, for: ExerciseDaysQuesitonIdentifier)
+        else {
+            return nil
+        }
+        
+        
+        let safeTitle = sanitize(title: title)
+        let identifier = "BCM\(safeTitle)InterventionActivity"
+        let instructions = self.text(from: result, for: ExerciseInstructionsQuestionIdentifier)
+        let unitDescription = self.unitDescription(from: result, for: ExerciseTimeQuestionIdentifier)
+        
+        return OCKCarePlanActivity(identifier: identifier,
+                                   groupIdentifier: ExerciseActivityGroupIdentifier,
+                                   type: .intervention,
+                                   title: title,
+                                   text: unitDescription,
+                                   tintColor: UIColor.orange,
+                                   instructions: instructions,
+                                   imageURL: nil,
+                                   schedule: schedule,
+                                   resultResettable: true,
+                                   userInfo: nil)
+    }
+    
+    static func medicationCarePlanActivity(from result: ORKTaskResult) -> OCKCarePlanActivity? {
+        guard
+            AddMedicationInterventionTaskIdentifier == result.identifier,
+            let title = text(from: result, for: MedicationNameQuestionIdentifier),
+            let repetitions = repetitions(from: result, for: MedicationRepetitionsQuestionIdentifier),
+            let schedule = schedule(from: result, repetitions: repetitions, for: MedicationDaysQuesitonIdentifier)
+        else {
+            return nil
+        }
+        
+        
+        let safeTitle = sanitize(title: title)
+        let identifier = "BCM\(safeTitle)InterventionActivity"
+        let instructions = self.text(from: result, for: MedicationInstructionsQuestionIdentifier)
+        let unitDescription = self.unitDescription(from: result, for: MedicationDosageQuestionIdentifier)
+        
+        return OCKCarePlanActivity(identifier: identifier,
+                                   groupIdentifier: MedicationActivityGroupIdentifier,
+                                   type: .intervention,
+                                   title: title,
+                                   text: unitDescription,
+                                   tintColor: UIColor.magenta,
+                                   instructions: instructions,
+                                   imageURL: nil,
+                                   schedule: schedule,
+                                   resultResettable: true,
+                                   userInfo: nil)
+    }
+    
+    static func sanitize(title: String) -> String { // NOTE: This would likely still break on various special characters
+        return title
+                .replacingOccurrences(of: " ", with: "-")
+                .replacingOccurrences(of: "\t", with: "-")
+                .replacingOccurrences(of: "\n", with: "-")
+    }
+    
+    static func text(from taskResult: ORKTaskResult, for identifier: String) -> String? {
         return
-            extract(from: taskResult, identifier: ExercieNameQuestionIdentifier, extractor: { (textResult: ORKTextQuestionResult) in
+            extract(from: taskResult, identifier: identifier, extractor: { (textResult: ORKTextQuestionResult) in
                 return textResult.textAnswer
             })
     }
     
-    static func repetitions(from taskResult: ORKTaskResult) -> Int? {
+    static func repetitions(from taskResult: ORKTaskResult, for identifier: String) -> Int? {
         return
-            extract(from: taskResult, identifier: ExerciseRepetitionsQuestionIdentifier, extractor: { (numResult: ORKNumericQuestionResult) in
+            extract(from: taskResult, identifier: identifier, extractor: { (numResult: ORKNumericQuestionResult) in
                 return numResult.numericAnswer?.intValue
             })
     }
     
-    static func description(from taskResult: ORKTaskResult) -> String? {
+    static func unitDescription(from taskResult: ORKTaskResult, for identifier: String) -> String? {
         return
-            extract(from: taskResult, identifier: ExerciseTimeQuestionIdentifier, extractor: { (numResult: ORKNumericQuestionResult) in
+            extract(from: taskResult, identifier: identifier, extractor: { (numResult: ORKNumericQuestionResult) in
                 guard
                     let value = numResult.numericAnswer as? Int,
                     let units = numResult.unit
                 else {
-                        return nil
+                    return nil
                 }
                 
                 return "\(value) \(units)"
             })
     }
     
-    static func schedule(from taskResult: ORKTaskResult, repetitions: Int) -> OCKCareSchedule? {
+    static func schedule(from taskResult: ORKTaskResult, repetitions: Int, for identifier: String) -> OCKCareSchedule? {
         guard
             let dayList =
             extract(from: taskResult,
-                    identifier: ExerciseDaysQuesitonIdentifier,
+                    identifier: identifier,
                     extractor: { (choiceResult: ORKChoiceQuestionResult) -> ([String]?) in
                         return choiceResult.choiceAnswers as? [String]
                     })
@@ -304,14 +346,7 @@ fileprivate extension NewActitiviesTasks {
         return OCKCareSchedule.weeklySchedule(withStartDate: todayComponents,
                                               occurrencesOnEachDay: repSchedule)
     }
-    
-    static func instructions(from taskResult: ORKTaskResult) -> String? {
-        return
-            extract(from: taskResult, identifier: ExerciseInstructionsQuestionIdentifier, extractor: { (textResult: ORKTextQuestionResult) in
-                return textResult.textAnswer
-            })
-    }
-    
+
     static func extract<T: ORKQuestionResult, U>(from taskResult: ORKTaskResult, identifier: String, extractor: (T) -> (U?)) -> U? {
         guard let results = taskResult.results else {
             return nil
