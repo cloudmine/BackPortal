@@ -12,6 +12,8 @@ class PatientListViewController: UITableViewController {
     }
     
     fileprivate var hasCompletedFirstFetch = false
+    fileprivate var originalOffset = CGPoint(x: 0, y: 0)
+    fileprivate var activeObserver: NSObjectProtocol? = nil
     
     // MARK: Public Properties
     
@@ -27,10 +29,16 @@ class PatientListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activeObserver = NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
+            self.fetchPatients()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        originalOffset = tableView?.contentOffset ?? originalOffset
         
         if !hasCompletedFirstFetch {
             fetchPatients()
@@ -41,7 +49,14 @@ class PatientListViewController: UITableViewController {
         onMain {
             self.tableView?.reloadData()
             self.refreshControl?.endRefreshing()
+            self.tableView?.setContentOffset(self.originalOffset, animated: true)
             self.performSegue(withIdentifier: "NoSelectionDetail", sender: nil)
+        }
+    }
+    
+    deinit {
+        if let activeObserver = activeObserver {
+            NotificationCenter.default.removeObserver(activeObserver)
         }
     }
 }
