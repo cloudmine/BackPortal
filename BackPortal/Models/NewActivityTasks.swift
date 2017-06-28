@@ -58,7 +58,8 @@ fileprivate extension NewActitiviesTasks {
     
     static var AddMedicationInterventionTask: ORKOrderedTask {
         let steps = [MedicationNameQuestion, MedicationDosageQuestion,
-                     MedicationDaysQuestion]
+                     MedicationDaysQuestion, MedicationRepetitionsQuestion,
+                     MedicationInstructionsQuestion]
         
         return ORKOrderedTask(identifier: AddMedicationInterventionTaskIdentifier,
                               steps: steps)
@@ -101,6 +102,37 @@ fileprivate extension NewActitiviesTasks {
         return daysOfWeekQuestion(identifier: MedicationDaysQuesitonIdentifier,
                                   title: NSLocalizedString("Days of Week", comment: ""),
                                   text: NSLocalizedString("Select the days of the week the patient should take this medication", comment: ""))
+    }
+    
+    static let MedicationRepetitionsQuestionIdentifier = "PortalAddMedicationRepetitions"
+    
+    static var MedicationRepetitionsQuestion: ORKQuestionStep {
+        let answer = ORKNumericAnswerFormat(style: .integer,
+                                            unit: nil,
+                                            minimum: NSNumber(value: 1),
+                                            maximum: NSNumber(value: 5))
+        
+        let question = ORKQuestionStep(identifier: MedicationRepetitionsQuestionIdentifier,
+                                       title: NSLocalizedString("Daily Doses", comment: ""),
+                                       text: NSLocalizedString("How many times, per day, should the patient take the prescibed dosage of this medication?", comment: ""),
+                                       answer: answer)
+        question.isOptional = false
+        
+        return question
+    }
+    
+    static let MedicationInstructionsQuestionIdentifier = "PortalAddMedicationInstructions"
+    
+    static var MedicationInstructionsQuestion: ORKQuestionStep {
+        let answer = ORKTextAnswerFormat(maximumLength: 300)
+        
+        let question = ORKQuestionStep(identifier: MedicationInstructionsQuestionIdentifier,
+                                       title: NSLocalizedString("Instructions", comment: ""),
+                                       text: NSLocalizedString("Enter the instructions for the patient to follow when taking this medication", comment: ""),
+                                       answer: answer)
+        question.isOptional = true
+        
+        return question
     }
 }
 
