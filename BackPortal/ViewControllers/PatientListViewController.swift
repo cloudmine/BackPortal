@@ -32,6 +32,7 @@ class PatientListViewController: UITableViewController {
         onMain {
             self.tableView?.reloadData()
             self.refreshControl?.endRefreshing()
+            self.performSegue(withIdentifier: "NoSelectionDetail", sender: nil)
         }
     }
 }
