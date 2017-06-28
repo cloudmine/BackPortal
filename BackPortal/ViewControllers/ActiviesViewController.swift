@@ -1,4 +1,5 @@
 import UIKit
+import CMHealth
 import CareKit
 import ResearchKit
 
@@ -18,12 +19,17 @@ class ActiviesViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("[PORTAL] Hello Activies Collection")
+        
+        collectionView?.alwaysBounceVertical = true
+        
+        let refresh = UIRefreshControl()
+        refresh.tintColor = UIColor.gray
+        collectionView?.addSubview(refresh)
+        refresh.addTarget(self, action: #selector(didActivate(refreshControl:)), for: .valueChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("[PORTAL] Activies Collection Appeared")
         
         reloadData()
         lastRenderedBounds = collectionView?.bounds
@@ -75,6 +81,36 @@ extension ActiviesViewController {
                     self.collectionView?.reloadData()
                 }
             }
+        }
+    }
+}
+
+// MARK: Target-Action
+
+fileprivate extension ActiviesViewController {
+    
+    @objc func didActivate(refreshControl: UIRefreshControl) {
+        guard
+            refreshControl.isRefreshing,
+            let store = selectedPatient?.store as? CMHCarePlanStore
+        else {
+            refreshControl.endRefreshing()
+            return
+        }
+        
+        store.runFetch { [weak self, weak refreshControl] (success, errors) in
+            defer {
+                onMain {
+                    refreshControl?.endRefreshing()
+                }
+            }
+            
+            guard success else {
+                print("[PORTAL] Error(s) fetching patient store: \(errors)")
+                return
+            }
+            
+            self?.reloadData()
         }
     }
 }
