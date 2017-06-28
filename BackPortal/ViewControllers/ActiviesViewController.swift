@@ -300,7 +300,7 @@ fileprivate extension ActiviesViewController {
         guard
             let taskResult = taskResult,
             let event = lastSelectedAssessment,
-            let eventResult = eventResult(from: taskResult)
+            let eventResult = AssessmentTasks.eventResult(from: taskResult)
         else {
             return
         }
@@ -313,50 +313,6 @@ fileprivate extension ActiviesViewController {
             
             self?.reloadData()
         }
-    }
-    
-    func eventResult(from taskResult: ORKTaskResult) -> OCKCarePlanEventResult? {
-        guard let stepResult = taskResult.firstResult as? ORKStepResult else {
-            return nil
-        }
-        
-        switch taskResult.identifier {
-        case AssessmentTasks.WeightIdentifier:
-            return weightResult(from: stepResult)
-        case AssessmentTasks.MoodIdentifier:
-            return scaleResult(from: stepResult)
-        case AssessmentTasks.PainIdentifier:
-            return scaleResult(from: stepResult)
-        default:
-            return nil
-        }
-    }
-    
-    func weightResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
-        guard
-            let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
-            let weightAnswer = weightResult.numericAnswer,
-            let weightUnit = weightResult.unit
-        else {
-            return nil
-        }
-        
-        return OCKCarePlanEventResult(valueString: weightAnswer.stringValue,
-                                      unitString: weightUnit,
-                                      userInfo: nil)
-    }
-    
-    func scaleResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
-        guard
-            let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
-            let scaleAnswer = scaleResult.scaleAnswer
-        else {
-            return nil
-        }
-        
-        return OCKCarePlanEventResult(valueString: scaleAnswer.stringValue,
-                                      unitString: NSLocalizedString("out of 10", comment: ""),
-                                      userInfo: nil)
     }
     
     func interventionCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {

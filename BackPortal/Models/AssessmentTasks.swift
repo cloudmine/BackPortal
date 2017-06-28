@@ -1,7 +1,45 @@
 import ResearchKit
+import CareKit
+
+// MARK: Public
 
 struct AssessmentTasks {
     
+    static func taskFor(identifier activityId: String) -> ORKTask? {
+        switch activityId {
+        case WeightIdentifier:
+            return AssessmentTasks.WeightTask
+        case PainIdentifier:
+            return AssessmentTasks.PainTask
+        case MoodIdentifier:
+            return AssessmentTasks.MoodTask
+        default:
+            return nil
+        }
+    }
+ 
+    static func eventResult(from taskResult: ORKTaskResult) -> OCKCarePlanEventResult? {
+        guard let stepResult = taskResult.firstResult as? ORKStepResult else {
+            return nil
+        }
+        
+        switch taskResult.identifier {
+        case AssessmentTasks.WeightIdentifier:
+            return weightResult(from: stepResult)
+        case AssessmentTasks.MoodIdentifier:
+            return scaleResult(from: stepResult)
+        case AssessmentTasks.PainIdentifier:
+            return scaleResult(from: stepResult)
+        default:
+            return nil
+        }
+    }
+}
+
+// MARK: Task Factories
+
+fileprivate extension AssessmentTasks {
+
     static var PainIdentifier = "BCMPainTrack"
     
     static var PainTask: ORKOrderedTask {
@@ -42,17 +80,36 @@ struct AssessmentTasks {
         
         return ORKOrderedTask(identifier: WeightIdentifier, steps: [weightQuestion])
     }
+}
+
+// MARK: ResearchKit result to CareKit result
+
+fileprivate extension AssessmentTasks {
     
-    static func taskFor(identifier activityId: String) -> ORKTask? {
-        switch activityId {
-        case WeightIdentifier:
-            return AssessmentTasks.WeightTask
-        case PainIdentifier:
-            return AssessmentTasks.PainTask
-        case MoodIdentifier:
-            return AssessmentTasks.MoodTask
-        default:
-            return nil
+    static func weightResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
+        guard
+            let weightResult = stepResult.firstResult as? ORKNumericQuestionResult,
+            let weightAnswer = weightResult.numericAnswer,
+            let weightUnit = weightResult.unit
+            else {
+                return nil
         }
+        
+        return OCKCarePlanEventResult(valueString: weightAnswer.stringValue,
+                                      unitString: weightUnit,
+                                      userInfo: nil)
+    }
+    
+    static func scaleResult(from stepResult: ORKStepResult) -> OCKCarePlanEventResult? {
+        guard
+            let scaleResult = stepResult.firstResult as? ORKScaleQuestionResult,
+            let scaleAnswer = scaleResult.scaleAnswer
+            else {
+                return nil
+        }
+        
+        return OCKCarePlanEventResult(valueString: scaleAnswer.stringValue,
+                                      unitString: NSLocalizedString("out of 10", comment: ""),
+                                      userInfo: nil)
     }
 }
