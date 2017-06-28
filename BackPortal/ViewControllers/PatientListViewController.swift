@@ -11,6 +11,8 @@ class PatientListViewController: UITableViewController {
         }
     }
     
+    fileprivate var hasCompletedFirstFetch = false
+    
     // MARK: Public Properties
     
     var selectedPatient: OCKPatient? {
@@ -25,7 +27,14 @@ class PatientListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPatients()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !hasCompletedFirstFetch {
+            fetchPatients()
+        }
     }
     
     private func renderUI() {
@@ -92,6 +101,8 @@ private extension PatientListViewController {
     func fetchPatients() {
         onMain {
             self.refreshControl?.beginRefreshing()
+            let yOffset = (self.tableView?.contentOffset.y ?? 0.0) - (self.refreshControl?.frame.size.height ?? 0.0)
+            self.tableView?.setContentOffset(CGPoint(x: 0, y: yOffset), animated: true)
         }
         
         CMHCarePlanStore.fetchAllPatients { (success, patients, errors) in
@@ -100,6 +111,7 @@ private extension PatientListViewController {
                 return
             }
             
+            self.hasCompletedFirstFetch = true
             self.patients = patients
         }
     }
