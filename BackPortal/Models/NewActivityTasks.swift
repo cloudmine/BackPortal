@@ -57,7 +57,8 @@ fileprivate extension NewActitiviesTasks {
     static let MedicationActivityGroupIdentifier = "Medications"
     
     static var AddMedicationInterventionTask: ORKOrderedTask {
-        let steps = [MedicationNameQuestion]
+        let steps = [MedicationNameQuestion, MedicationDosageQuestion,
+                     MedicationDaysQuestion]
         
         return ORKOrderedTask(identifier: AddMedicationInterventionTaskIdentifier,
                               steps: steps)
@@ -75,6 +76,31 @@ fileprivate extension NewActitiviesTasks {
         question.isOptional = false
         
         return question
+    }
+    
+    static let MedicationDosageQuestionIdentifier = "PortalAddMedicationDosage"
+    
+    static var MedicationDosageQuestion: ORKQuestionStep {
+        let answer = ORKNumericAnswerFormat(style: .integer,
+                                            unit: NSLocalizedString("mg", comment: ""),
+                                            minimum: NSNumber(value: 1),
+                                            maximum: NSNumber(value: 10000))
+        
+        let question = ORKQuestionStep(identifier: MedicationDosageQuestionIdentifier,
+                                       title: NSLocalizedString("Dosage", comment: ""),
+                                       text: NSLocalizedString("Enter the prescribed dosage in mg", comment: ""),
+                                       answer: answer)
+        question.isOptional = false
+        
+        return question
+    }
+    
+    static let MedicationDaysQuesitonIdentifier = "PortalAddMedicationDays"
+    
+    static var MedicationDaysQuestion: ORKQuestionStep {
+        return daysOfWeekQuestion(identifier: MedicationDaysQuesitonIdentifier,
+                                  title: NSLocalizedString("Days of Week", comment: ""),
+                                  text: NSLocalizedString("Select the days of the week the patient should take this medication", comment: ""))
     }
 }
 
@@ -129,24 +155,9 @@ fileprivate extension NewActitiviesTasks {
     static let ExerciseDaysQuesitonIdentifier = "PortalAddExerciseDays"
     
     static var ExerciseDaysQuestion: ORKQuestionStep {
-        let choices = [ ORKTextChoice(text: NSLocalizedString("Sunday", comment: ""), value: "Su" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Monday", comment: ""), value: "Mo" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Tuesday", comment: ""), value: "Tu" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Wednesday", comment: ""), value: "We" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Thursday", comment: ""), value: "Th" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Friday", comment: ""), value: "Fr" as NSString),
-                        ORKTextChoice(text: NSLocalizedString("Saturday", comment: ""), value: "Sa" as NSString), ]
-        
-        let answer = ORKTextChoiceAnswerFormat(style: .multipleChoice,
-                                               textChoices: choices)
-        
-        let question = ORKQuestionStep(identifier: ExerciseDaysQuesitonIdentifier,
-                                       title: NSLocalizedString("Days of Week", comment: ""),
-                                       text: NSLocalizedString("Select the days of the week the patient should complete this exercise", comment: ""),
-                                       answer: answer)
-        question.isOptional = false
-        
-        return question
+        return daysOfWeekQuestion(identifier: ExerciseDaysQuesitonIdentifier,
+                                  title: NSLocalizedString("Days of Week", comment: ""),
+                                  text: NSLocalizedString("Select the days of the week the patient should complete this exercise", comment: ""))
     }
     
     static let ExerciseRepetitionsQuestionIdentifier = "PortalAddExerciseRepetitions"
@@ -176,6 +187,32 @@ fileprivate extension NewActitiviesTasks {
                                        text: NSLocalizedString("Enter the instructions for the patient to follow for this exercise", comment: ""),
                                        answer: answer)
         question.isOptional = true
+        
+        return question
+    }
+}
+
+// MARK: Question Builders
+
+fileprivate extension NewActitiviesTasks {
+    
+    static func daysOfWeekQuestion(identifier: String, title: String, text: String?) -> ORKQuestionStep {
+        let choices = [ ORKTextChoice(text: NSLocalizedString("Sunday", comment: ""), value: "Su" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Monday", comment: ""), value: "Mo" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Tuesday", comment: ""), value: "Tu" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Wednesday", comment: ""), value: "We" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Thursday", comment: ""), value: "Th" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Friday", comment: ""), value: "Fr" as NSString),
+                        ORKTextChoice(text: NSLocalizedString("Saturday", comment: ""), value: "Sa" as NSString), ]
+        
+        let answer = ORKTextChoiceAnswerFormat(style: .multipleChoice,
+                                               textChoices: choices)
+        
+        let question = ORKQuestionStep(identifier: identifier,
+                                       title: title,
+                                       text: text,
+                                       answer: answer)
+        question.isOptional = false
         
         return question
     }
