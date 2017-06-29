@@ -394,7 +394,9 @@ fileprivate extension ActiviesViewController {
         sheet.popoverPresentationController?.sourceRect = midBounds
         
         let end = UIAlertAction(title: NSLocalizedString("End On This Day", comment: ""), style: .default) { _ in
-            self.setEndDate(for: activity)
+            self.showConfirmationAlert(message: NSLocalizedString("Are you sure you want to end \(activity.title)? This action cannot be undone!", comment: "")) {
+                self.setEndDate(for: activity)
+            }
         }
         
         let archive = UIAlertAction(title: NSLocalizedString("Archive", comment: ""), style: .destructive) { _ in
@@ -408,6 +410,23 @@ fileprivate extension ActiviesViewController {
         sheet.addAction(cancel)
         
         present(sheet, animated: true, completion: nil)
+    }
+    
+    func showConfirmationAlert(message: String?, action: @escaping () -> Void) {
+        let alert = UIAlertController(title: NSLocalizedString("Are you sure?", comment: ""),
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .destructive) { _ in
+            action()
+        }
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func taskViewController(for assessmentEvent: OCKCarePlanEvent?) -> ORKTaskViewController? {
