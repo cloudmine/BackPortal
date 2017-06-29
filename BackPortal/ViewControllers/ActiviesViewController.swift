@@ -323,6 +323,17 @@ fileprivate extension ActiviesViewController {
             self?.reloadData()
         }
     }
+    
+    func archive(activity: OCKCarePlanActivity) {
+        selectedPatient?.store.remove(activity) { [weak self] (success, error) in
+            guard success else {
+                print("[PORTAL] Error removing activity: \(error!)")
+                return
+            }
+            
+            self?.reloadData()
+        }
+    }
 }
 
 // MARK: Private Helpers
@@ -400,7 +411,9 @@ fileprivate extension ActiviesViewController {
         }
         
         let archive = UIAlertAction(title: NSLocalizedString("Archive", comment: ""), style: .destructive) { _ in
-            
+            self.showConfirmationAlert(message: NSLocalizedString("Are you sure you want to archive \(activity.title)? The data will be removed from all devices, but saved in the cloud. This action cannot be undone!", comment: "")) {
+                self.archive(activity: activity)
+            }
         }
         
         let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
