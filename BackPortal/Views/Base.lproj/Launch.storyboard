@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,28 +20,59 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2017 CloudMine. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  ©2017. CloudMine." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                                <rect key="frame" x="20" y="699" width="984" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BackPortal" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="CareKit Provider Demo" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                <rect key="frame" x="20" y="278" width="984" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                <color key="textColor" red="0.35622599719999998" green="0.75368189809999997" blue="0.63925397399999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brandmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZHH-mf-4xs">
+                                <rect key="frame" x="358.5" y="326.5" width="307" height="307"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZHH-mf-4xs" secondAttribute="height" multiplier="1:1" id="Za0-pG-4lt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BackPortal" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-m3-JJa">
+                                <rect key="frame" x="20" y="231" width="984" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="39"/>
+                                <color key="textColor" red="0.35622599720954895" green="0.75368189811706543" blue="0.63925397396087646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudmine-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8m2-0U-bef">
+                                <rect key="frame" x="397" y="88.5" width="230" height="122.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="B86-7p-2jX"/>
+                                    <constraint firstAttribute="width" secondItem="8m2-0U-bef" secondAttribute="height" multiplier="15:8" id="lh8-ny-3Gs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZHH-mf-4xs" secondAttribute="bottom" constant="8" symbolic="YES" id="0Gs-AW-FrU"/>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="fhZ-m3-JJa" secondAttribute="bottom" id="2ix-wJ-r7I"/>
                             <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="ZHH-mf-4xs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NtD-cn-pH2"/>
+                            <constraint firstItem="ZHH-mf-4xs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="125/100" id="P2A-76-6i4"/>
                             <constraint firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
+                            <constraint firstItem="8m2-0U-bef" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="WQA-8T-lpq"/>
+                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="40" id="Y44-ml-fuU"/>
+                            <constraint firstItem="fhZ-m3-JJa" firstAttribute="leading" secondItem="GJd-Yh-RWb" secondAttribute="leading" id="bTB-1r-uMu"/>
+                            <constraint firstItem="8m2-0U-bef" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fDN-dh-K4w"/>
+                            <constraint firstItem="fhZ-m3-JJa" firstAttribute="trailing" secondItem="GJd-Yh-RWb" secondAttribute="trailing" id="jZs-mw-2ob"/>
+                            <constraint firstItem="ZHH-mf-4xs" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="10" id="mQA-Ro-dJp"/>
+                            <constraint firstItem="fhZ-m3-JJa" firstAttribute="top" secondItem="8m2-0U-bef" secondAttribute="bottom" constant="20" id="ord-I3-V3h"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="x7j-FC-K8j"/>
+                            <constraint firstItem="ZHH-mf-4xs" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="30/100" id="yv6-nF-Ew5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,4 +81,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Brandmark.png" width="2338" height="1913"/>
+        <image name="cloudmine-logo.png" width="300" height="158"/>
+    </resources>
 </document>

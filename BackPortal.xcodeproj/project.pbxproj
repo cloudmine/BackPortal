@@ -10,6 +10,8 @@
 		62E0C9B8F175D9C2BDBA1489 /* Pods_BackPortalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB4850FC2AFCB732D18AAF8 /* Pods_BackPortalTests.framework */; };
 		995FB5B058816FAAFF7AFD43 /* Pods_BackPortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */; };
 		B41CF50A1F058AB700FB860F /* UIColor+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CF5091F058AB700FB860F /* UIColor+Portal.swift */; };
+		B41CF50C1F059FA900FB860F /* Brandmark.png in Resources */ = {isa = PBXBuildFile; fileRef = B41CF50B1F059FA900FB860F /* Brandmark.png */; };
+		B41CF5101F05A1A300FB860F /* cloudmine-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B41CF50F1F05A1A300FB860F /* cloudmine-logo.png */; };
 		B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */; };
 		B41DC0121EF2DDB800B7DAE9 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41DC0141EF2DDB800B7DAE9 /* Authentication.storyboard */; };
 		B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */; };
@@ -68,6 +70,8 @@
 		75148C20DE6AC9B502B9E0BF /* Pods-BackPortalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackPortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41CF5091F058AB700FB860F /* UIColor+Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Portal.swift"; sourceTree = "<group>"; };
+		B41CF50B1F059FA900FB860F /* Brandmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brandmark.png; sourceTree = "<group>"; };
+		B41CF50F1F05A1A300FB860F /* cloudmine-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudmine-logo.png"; sourceTree = "<group>"; };
 		B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortalSecrets.swift; sourceTree = "<group>"; };
 		B41DC0131EF2DDB800B7DAE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchUtils.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				B4297EE31EF2D1D300A0DE1F /* Assets.xcassets */,
+				B41CF50B1F059FA900FB860F /* Brandmark.png */,
+				B41CF50F1F05A1A300FB860F /* cloudmine-logo.png */,
 				B4297F151EF2D4D500A0DE1F /* Launch.storyboard */,
 				B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */,
 				B41DC0141EF2DDB800B7DAE9 /* Authentication.storyboard */,
@@ -400,8 +406,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41CF5101F05A1A300FB860F /* cloudmine-logo.png in Resources */,
 				B41DC0241EF2FD9100B7DAE9 /* Account.storyboard in Resources */,
 				B41DC0121EF2DDB800B7DAE9 /* Authentication.storyboard in Resources */,
+				B41CF50C1F059FA900FB860F /* Brandmark.png in Resources */,
 				B41DC02B1EF324E500B7DAE9 /* Patients.storyboard in Resources */,
 				B4297EE41EF2D1D300A0DE1F /* Assets.xcassets in Resources */,
 				B4297F131EF2D4D500A0DE1F /* Launch.storyboard in Resources */,
