@@ -25,6 +25,7 @@ class PatientDetailViewController: UIViewController {
         print("[PORTAL] Hello Patient Detail")
         
         navigationItem.leftBarButtonItem = parent?.splitViewController?.displayModeButtonItem
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.portalBlue
     }
     
     override func viewDidAppear(_ animated: Bool) {

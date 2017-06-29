@@ -60,6 +60,7 @@ extension ActivitiesHeader {
         let alert = UIAlertController(title: NSLocalizedString("Intervention Type", comment: ""),
                                       message: nil,
                                       preferredStyle: .actionSheet)
+        alert.view?.tintColor = UIColor.portalBlue
         
         let exercise = UIAlertAction(title: NSLocalizedString("Exercise", comment: ""), style: .default) { _ in
             self.delegate?.activitiesHeader(self, didSelectAddFor: .exercise)

@@ -17,6 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="selectedImageTintColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="64U-Ua-RUe" kind="relationship" relationship="viewControllers" id="9F2-W6-4Ap"/>

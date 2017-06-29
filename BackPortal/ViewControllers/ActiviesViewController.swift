@@ -249,6 +249,7 @@ extension ActiviesViewController: ActivitiesHeaderDelegate {
         
         let task = NewActitiviesTasks.task(for: subtype)
         let taskVC = ORKTaskViewController(task: task, taskRun: nil)
+        taskVC.view?.tintColor = UIColor.portalBlue
         taskVC.modalPresentationStyle = .formSheet
         taskVC.delegate = self
         
@@ -399,6 +400,7 @@ fileprivate extension ActiviesViewController {
         let sheet = UIAlertController(title: NSLocalizedString("Modify \(activity.title)", comment: ""),
                                       message: NSLocalizedString("Select an action to perform on this activity", comment: ""),
                                       preferredStyle: .actionSheet)
+        sheet.view?.tintColor = UIColor.portalBlue
         
         let midBounds = CGRect(x: view.bounds.midX - 1, y: view.bounds.midY - 1, width: 3, height: 3)
         sheet.popoverPresentationController?.sourceView = view
@@ -429,6 +431,7 @@ fileprivate extension ActiviesViewController {
         let alert = UIAlertController(title: NSLocalizedString("Are you sure?", comment: ""),
                                       message: message,
                                       preferredStyle: .alert)
+        alert.view?.tintColor = UIColor.portalBlue
         
         let confirm = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .destructive) { _ in
             action()
@@ -452,6 +455,7 @@ fileprivate extension ActiviesViewController {
         }
         
         let taskVC = ORKTaskViewController(task: task, taskRun: nil)
+        taskVC.view?.tintColor = UIColor.portalBlue
         taskVC.modalPresentationStyle = .formSheet
         taskVC.showsProgressInNavigationBar = false
         taskVC.delegate = self

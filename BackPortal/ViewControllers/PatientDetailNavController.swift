@@ -6,6 +6,6 @@ class PatientDetailNavController: UINavigationController {
         super.viewDidLoad()
         print("[PORTAL] Hello Patient Detail Nav")
         
-        navigationItem.leftItemsSupplementBackButton = true 
+        navigationItem.leftItemsSupplementBackButton = true
     }
 }

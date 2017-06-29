@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meJ-oo-LPF">
-                                <rect key="frame" x="0.0" y="64" width="702.5" height="704"/>
+                                <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                                 <connections>
                                     <segue destination="0eu-cO-tCq" kind="embed" id="W3Z-Mq-a6H"/>
                                 </connections>
@@ -54,8 +54,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Patient Name" id="LfF-cN-cgL">
-                        <barButtonItem key="backBarButtonItem" id="SyF-IP-KPf"/>
+                        <barButtonItem key="backBarButtonItem" id="SyF-IP-KPf">
+                            <color key="tintColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Today" id="Icr-ck-pp4" userLabel="Today">
+                            <color key="tintColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="didPressWithDateButton:" destination="ERB-Ib-2Rx" id="b2S-VV-rqX"/>
                             </connections>
@@ -200,8 +203,8 @@
         <scene sceneID="UPg-2c-7Uc">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="0eu-cO-tCq" customClass="ActiviesViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4XY-SU-o9U">
-                        <rect key="frame" x="0.0" y="0.0" width="702.5" height="704"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="4XY-SU-o9U">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qhC-4l-en9">
@@ -341,7 +344,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivitiesSectionHeader" id="rt5-Md-LSf" customClass="ActivitiesHeader" customModule="BackPortal" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="702.5" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="703" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYM-kB-3kh" userLabel="Content View">
@@ -359,7 +362,9 @@
                                                 <constraint firstAttribute="width" constant="44" id="Vd0-60-aXI"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="38"/>
-                                            <state key="normal" title="+"/>
+                                            <state key="normal" title="+">
+                                                <color key="titleColor" red="0.050980575379999997" green="0.58823537829999994" blue="0.8392156959" alpha="1" colorSpace="deviceRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="didPressWithAddButton:" destination="rt5-Md-LSf" eventType="touchUpInside" id="KoG-3v-DHz"/>
                                             </connections>

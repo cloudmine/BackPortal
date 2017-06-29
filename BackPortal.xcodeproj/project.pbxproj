@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62E0C9B8F175D9C2BDBA1489 /* Pods_BackPortalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB4850FC2AFCB732D18AAF8 /* Pods_BackPortalTests.framework */; };
 		995FB5B058816FAAFF7AFD43 /* Pods_BackPortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */; };
+		B41CF50A1F058AB700FB860F /* UIColor+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CF5091F058AB700FB860F /* UIColor+Portal.swift */; };
 		B41DC00F1EF2D9CC00B7DAE9 /* PortalSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */; };
 		B41DC0121EF2DDB800B7DAE9 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41DC0141EF2DDB800B7DAE9 /* Authentication.storyboard */; };
 		B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */; };
@@ -66,6 +67,7 @@
 		6B9CB4F026613D1FC355F9B5 /* Pods_BackPortalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackPortalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75148C20DE6AC9B502B9E0BF /* Pods-BackPortalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackPortalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackPortalTests/Pods-BackPortalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A474FD433B318CE2030B2915 /* Pods_BackPortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackPortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41CF5091F058AB700FB860F /* UIColor+Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Portal.swift"; sourceTree = "<group>"; };
 		B41DC00E1EF2D9CC00B7DAE9 /* PortalSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortalSecrets.swift; sourceTree = "<group>"; };
 		B41DC0131EF2DDB800B7DAE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchUtils.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				B41DC0151EF2DE3D00B7DAE9 /* DispatchUtils.swift */,
 				B41DC0191EF2E3F200B7DAE9 /* AlertUtils.swift */,
 				B499F9EB1F01568900A76098 /* Date+Portal.swift */,
+				B41CF5091F058AB700FB860F /* UIColor+Portal.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				B4C2BE1C1EF823D200E70A31 /* ActiviesViewController.swift in Sources */,
 				B41DC0311EF32A8B00B7DAE9 /* PatientListViewController.swift in Sources */,
 				B41DC0281EF2FE0600B7DAE9 /* AccountViewController.swift in Sources */,
+				B41CF50A1F058AB700FB860F /* UIColor+Portal.swift in Sources */,
 				B453165B1EF97A7D004A8FD9 /* InterventionCell.swift in Sources */,
 				B41DC01A1EF2E3F200B7DAE9 /* AlertUtils.swift in Sources */,
 				B41DC0211EF2FB6500B7DAE9 /* MainPanelViewController.swift in Sources */,
