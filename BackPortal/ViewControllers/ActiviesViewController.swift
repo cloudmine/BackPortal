@@ -235,9 +235,9 @@ extension ActiviesViewController: ORKTaskViewControllerDelegate {
 extension ActiviesViewController: ActivitiesHeaderDelegate {
     
     func activitiesHeader(_ activitiesHeader: ActivitiesHeader, wantsToShowPopover viewController: UIViewController, from view: UIView) {
-        viewController.modalPresentationStyle = .popover
+        let midBounds = CGRect(x: view.bounds.midX - 1, y: view.bounds.midY - 1, width: 3, height: 3)
         viewController.popoverPresentationController?.sourceView = view
-        viewController.preferredContentSize = CGSize(width: 320, height: 175)
+        viewController.popoverPresentationController?.sourceRect = midBounds
         
         present(viewController, animated: true, completion: nil)
     }
