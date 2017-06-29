@@ -52,16 +52,29 @@ extension ActivitiesHeader {
     @IBAction func didPress(addButton: UIButton) {
         guard
             let type = type,
-            case .intervention = type, // TODO: Implement assessment case
-            let selectVC = UIStoryboard(name: "InterventionType", bundle: Bundle.main).instantiateInitialViewController() as? InterventionTypeViewController
+            case .intervention = type // TODO: Implement assessment case
         else {
             return
         }
         
-        selectVC.selectionCallback = { subtype in
-            self.delegate?.activitiesHeader(self, didSelectAddFor: subtype)
+        let alert = UIAlertController(title: NSLocalizedString("Intervention Type", comment: ""),
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        
+        let exercise = UIAlertAction(title: NSLocalizedString("Exercise", comment: ""), style: .default) { _ in
+            self.delegate?.activitiesHeader(self, didSelectAddFor: .exercise)
         }
         
-        delegate?.activitiesHeader(self, wantsToShowPopover: selectVC, from: addButton)
+        let medication = UIAlertAction(title: NSLocalizedString("Medication", comment: ""), style: .default) { _ in
+            self.delegate?.activitiesHeader(self, didSelectAddFor: .medication)
+        }
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        
+        alert.addAction(exercise)
+        alert.addAction(medication)
+        alert.addAction(cancel)
+                
+        delegate?.activitiesHeader(self, wantsToShowPopover: alert, from: addButton)
     }
 }
