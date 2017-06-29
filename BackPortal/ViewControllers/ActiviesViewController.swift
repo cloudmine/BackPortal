@@ -256,17 +256,9 @@ extension ActiviesViewController: ActivitiesHeaderDelegate {
     }
 }
 
-// MARK: Private Helpers
+// MARK: Store Actions
 
 fileprivate extension ActiviesViewController {
-    
-    var selectedPatient: OCKPatient? {
-        return patientSplitViewController?.patientListViewController?.selectedPatient
-    }
-    
-    var selectedDate: Date? {
-        return (parent as? PatientDetailViewController)?.lastSelectedDate
-    }
     
     func insert(activity: OCKCarePlanActivity) {
         selectedPatient?.store.add(activity, completion: { [weak self] (success, error) in
@@ -301,10 +293,10 @@ fileprivate extension ActiviesViewController {
             let taskResult = taskResult,
             let event = lastSelectedAssessment,
             let eventResult = AssessmentTasks.eventResult(from: taskResult)
-        else {
-            return
+            else {
+                return
         }
-            
+        
         selectedPatient?.store.update(event, with: eventResult, state: .completed) { [weak self] (success, event, error) in
             guard nil == error else {
                 print("[PORTAL] Error Updating Assessment Event: \(error!)")
@@ -313,6 +305,36 @@ fileprivate extension ActiviesViewController {
             
             self?.reloadData()
         }
+    }
+    
+    func setEndDate(for activity: OCKCarePlanActivity) {
+        guard let selectedDate = selectedDate else {
+            return
+        }
+        
+        let endComponents = NSDateComponents(date: selectedDate, calendar: Calendar.current) as DateComponents
+        
+        selectedPatient?.store.setEndDate(endComponents, for: activity) { [weak self] (success, activity, error) in
+            guard success else {
+                print("[PORTAL] Error setting end date: \(error!)")
+                return
+            }
+            
+            self?.reloadData()
+        }
+    }
+}
+
+// MARK: Private Helpers
+
+fileprivate extension ActiviesViewController {
+    
+    var selectedPatient: OCKPatient? {
+        return patientSplitViewController?.patientListViewController?.selectedPatient
+    }
+    
+    var selectedDate: Date? {
+        return (parent as? PatientDetailViewController)?.lastSelectedDate
     }
     
     func interventionCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
@@ -337,37 +359,6 @@ fileprivate extension ActiviesViewController {
         return interventionCell
     }
     
-    func showActions(for activity: OCKCarePlanActivity, from view: UIView) {
-        guard nil == presentedViewController else {
-            return
-        }
-        
-        let sheet = UIAlertController(title: NSLocalizedString("Modify \(activity.title)", comment: ""),
-                                      message: NSLocalizedString("Select an action to perform on this activity", comment: ""),
-                                      preferredStyle: .actionSheet)
-        
-        let midBounds = CGRect(x: view.bounds.midX - 1, y: view.bounds.midY - 1, width: 3, height: 3)
-        
-        sheet.popoverPresentationController?.sourceView = view
-        sheet.popoverPresentationController?.sourceRect = midBounds
-        
-        let end = UIAlertAction(title: NSLocalizedString("End On This Day", comment: ""), style: .default) { (action) in
-            
-        }
-        
-        let archive = UIAlertAction(title: NSLocalizedString("Archive", comment: ""), style: .destructive) { (action) in
-            
-        }
-        
-        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
-        
-        sheet.addAction(end)
-        sheet.addAction(archive)
-        sheet.addAction(cancel)
-        
-        present(sheet, animated: true, completion: nil)
-    }
-    
     func assessmentCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssessmentActivityReuseIdentifier, for: indexPath)
         
@@ -387,6 +378,36 @@ fileprivate extension ActiviesViewController {
         }
         
         return assessmentCell
+    }
+    
+    func showActions(for activity: OCKCarePlanActivity, from view: UIView) {
+        guard nil == presentedViewController else {
+            return
+        }
+        
+        let sheet = UIAlertController(title: NSLocalizedString("Modify \(activity.title)", comment: ""),
+                                      message: NSLocalizedString("Select an action to perform on this activity", comment: ""),
+                                      preferredStyle: .actionSheet)
+        
+        let midBounds = CGRect(x: view.bounds.midX - 1, y: view.bounds.midY - 1, width: 3, height: 3)
+        sheet.popoverPresentationController?.sourceView = view
+        sheet.popoverPresentationController?.sourceRect = midBounds
+        
+        let end = UIAlertAction(title: NSLocalizedString("End On This Day", comment: ""), style: .default) { _ in
+            self.setEndDate(for: activity)
+        }
+        
+        let archive = UIAlertAction(title: NSLocalizedString("Archive", comment: ""), style: .destructive) { _ in
+            
+        }
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        
+        sheet.addAction(end)
+        sheet.addAction(archive)
+        sheet.addAction(cancel)
+        
+        present(sheet, animated: true, completion: nil)
     }
     
     func taskViewController(for assessmentEvent: OCKCarePlanEvent?) -> ORKTaskViewController? {
