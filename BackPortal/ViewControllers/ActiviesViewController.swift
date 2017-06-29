@@ -378,7 +378,13 @@ fileprivate extension ActiviesViewController {
             return cell
         }
         
-        assessmentCell.configure(with: assessmentEvents[indexPath.row], tapBack: nil)
+        assessmentCell.configure(with: assessmentEvents[indexPath.row]) { [weak self] action in
+            guard case .modify(let activity) = action else {
+                return
+            }
+            
+            self?.showActions(for: activity, from: assessmentCell)
+        }
         
         return assessmentCell
     }
