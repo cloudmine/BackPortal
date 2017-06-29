@@ -330,11 +330,42 @@ fileprivate extension ActiviesViewController {
             case .toggle(let event):
                 self?.toggle(interventionEvent: event)
             case .modify(let activity):
-                print("[PORTAL] Modify activity: \(activity)")
+                self?.showActions(for: activity, from: interventionCell)
             }
         }
         
         return interventionCell
+    }
+    
+    func showActions(for activity: OCKCarePlanActivity, from view: UIView) {
+        guard nil == presentedViewController else {
+            return
+        }
+        
+        let sheet = UIAlertController(title: NSLocalizedString("Modify \(activity.title)", comment: ""),
+                                      message: NSLocalizedString("Select an action to perform on this activity", comment: ""),
+                                      preferredStyle: .actionSheet)
+        
+        let midBounds = CGRect(x: view.bounds.midX - 1, y: view.bounds.midY - 1, width: 3, height: 3)
+        
+        sheet.popoverPresentationController?.sourceView = view
+        sheet.popoverPresentationController?.sourceRect = midBounds
+        
+        let end = UIAlertAction(title: NSLocalizedString("End On This Day", comment: ""), style: .default) { (action) in
+            
+        }
+        
+        let archive = UIAlertAction(title: NSLocalizedString("Archive", comment: ""), style: .destructive) { (action) in
+            
+        }
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        
+        sheet.addAction(end)
+        sheet.addAction(archive)
+        sheet.addAction(cancel)
+        
+        present(sheet, animated: true, completion: nil)
     }
     
     func assessmentCell(from collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {

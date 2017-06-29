@@ -69,12 +69,20 @@ class InterventionCell: UICollectionViewCell {
 
 fileprivate extension InterventionCell {
     
-    @objc func didLongPress(gestureRecognizer: UILongPressGestureRecognizer) {      
+    @objc func didLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         guard let activity = events.first?.activity else {
             return
         }
         
         tapCallback?(.modify(activity))
+    }
+    
+    @objc func didPress(eventButton: UIButton) {
+        guard eventButton.tag < events.count else {
+            return
+        }
+        
+        tapCallback?(.toggle(events[eventButton.tag]))
     }
 }
 
@@ -103,14 +111,6 @@ fileprivate extension InterventionCell {
         return button
     }
     
-    @objc func didPress(eventButton: UIButton) {
-        guard eventButton.tag < events.count else {
-            return
-        }
-        
-        tapCallback?(.toggle(events[eventButton.tag]))
-    }
-    
     func resetStackView() {
         guard let eventsStackView = eventsStackView else {
             return
@@ -118,7 +118,6 @@ fileprivate extension InterventionCell {
         
         while eventsStackView.arrangedSubviews.count > 0 {
             eventsStackView.arrangedSubviews[0].removeFromSuperview()
-            //eventsStackView.removeArrangedSubview(eventsStackView.arrangedSubviews[0])
         }
     }
 }
