@@ -100,7 +100,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Account" width="30" height="30"/>
+        <image name="Account" width="24" height="24"/>
         <image name="ProfilePlaceHolder" width="150" height="150"/>
     </resources>
 </document>

@@ -6,10 +6,11 @@ class AuthViewController: UIViewController {
     
     // MARK: IBOutlets
     
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var emailErrorLabel: UILabel!
-    @IBOutlet var passwordErrorLabel: UILabel!
+    @IBOutlet fileprivate var emailTextField: UITextField?
+    @IBOutlet fileprivate var passwordTextField: UITextField?
+    @IBOutlet fileprivate var emailErrorLabel: UILabel?
+    @IBOutlet fileprivate var passwordErrorLabel: UILabel?
+    @IBOutlet fileprivate var loginButton: UIButton?
     
     // MARK: Properties
     
@@ -19,8 +20,10 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         print("[PORTAL] Auth View Did Load")
         
-        validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
-        validator.registerField(passwordTextField, errorLabel: passwordErrorLabel, rules: [RequiredRule()])
+        validator.registerField(emailTextField!, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
+        validator.registerField(passwordTextField!, errorLabel: passwordErrorLabel, rules: [RequiredRule()])
+        
+        loginButton?.layer.cornerRadius = 4.0
     }
 }
 
