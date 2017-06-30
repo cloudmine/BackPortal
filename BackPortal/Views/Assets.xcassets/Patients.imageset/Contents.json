@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Symptom-OFF@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "SmallStar@2x.png",
+      "filename" : "Symptom-OFF@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "SmallStar@3x.png",
+      "filename" : "Symptom-OFF@3x.png",
       "scale" : "3x"
     }
   ],
