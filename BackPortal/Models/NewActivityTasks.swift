@@ -36,7 +36,7 @@ fileprivate extension NewActitiviesTasks {
     static var AddMedicationInterventionTask: ORKOrderedTask {
         let steps = [MedicationNameQuestion, MedicationDosageQuestion,
                      MedicationDaysQuestion, MedicationRepetitionsQuestion,
-                     MedicationInstructionsQuestion]
+                     MedicationStartDateQuestion, MedicationInstructionsQuestion]
         
         return ORKOrderedTask(identifier: AddMedicationInterventionTaskIdentifier,
                               steps: steps)
@@ -98,6 +98,24 @@ fileprivate extension NewActitiviesTasks {
         return question
     }
     
+    static let MedicationStartDateQuestionIdentifier = "PortalAddMedicationStartDate"
+    
+    static var MedicationStartDateQuestion: ORKQuestionStep {
+        let answer = ORKDateAnswerFormat(style: .date,
+                                         defaultDate: Date(),
+                                         minimumDate: nil,
+                                         maximumDate: nil,
+                                         calendar: Calendar.current)
+        
+        let question = ORKQuestionStep(identifier: MedicationStartDateQuestionIdentifier,
+                                       title: NSLocalizedString("Start Date", comment: ""),
+                                       text: NSLocalizedString("Select the date the patient should begin taking this medication.", comment: ""),
+                                       answer: answer)
+        question.isOptional = false
+        
+        return question
+    }
+    
     static let MedicationInstructionsQuestionIdentifier = "PortalAddMedicationInstructions"
     
     static var MedicationInstructionsQuestion: ORKQuestionStep {
@@ -124,7 +142,7 @@ fileprivate extension NewActitiviesTasks {
     static var AddExerciseInterventionTask: ORKOrderedTask {
         let steps = [ExerciseNameQuestion, ExerciseTimeQuestion,
                      ExerciseDaysQuestion, ExerciseRepetitionsQuestion,
-                     ExerciseInstructionsQuestion]
+                     ExerciseStartDateQuestion, ExerciseInstructionsQuestion]
         
         return ORKOrderedTask(identifier: AddExerciseInterventionTaskIdentifier,
                               steps: steps)
@@ -186,6 +204,24 @@ fileprivate extension NewActitiviesTasks {
         return question
     }
     
+    static let ExerciseStartDateQuestionIdentifier = "PortalAddExerciseStartDate"
+    
+    static var ExerciseStartDateQuestion: ORKQuestionStep {
+        let answer = ORKDateAnswerFormat(style: .date,
+                                         defaultDate: Date(),
+                                         minimumDate: nil,
+                                         maximumDate: nil,
+                                         calendar: Calendar.current)
+        
+        let question = ORKQuestionStep(identifier: ExerciseStartDateQuestionIdentifier,
+                                       title: NSLocalizedString("Start Date", comment: ""),
+                                       text: NSLocalizedString("Select the date the patient should begin this exercise task.", comment: ""),
+                                       answer: answer)
+        question.isOptional = false
+        
+        return question
+    }
+    
     static let ExerciseInstructionsQuestionIdentifier = "PortalAddExerciseInstructions"
     
     static var ExerciseInstructionsQuestion: ORKQuestionStep {
@@ -236,11 +272,11 @@ fileprivate extension NewActitiviesTasks {
             AddExerciseInterventionTaskIdentifier == result.identifier,
             let title = text(from: result, for: ExerciseNameQuestionIdentifier),
             let repetitions = repetitions(from: result, for: ExerciseRepetitionsQuestionIdentifier),
-            let schedule = schedule(from: result, repetitions: repetitions, for: ExerciseDaysQuesitonIdentifier)
+            let startDate = startDate(from: result, for: ExerciseStartDateQuestionIdentifier),
+            let schedule = schedule(from: result, start: startDate, repetitions: repetitions, for: ExerciseDaysQuesitonIdentifier)
         else {
             return nil
         }
-        
         
         let safeTitle = sanitize(title: title)
         let identifier = "BCM\(safeTitle)InterventionActivity"
@@ -265,7 +301,8 @@ fileprivate extension NewActitiviesTasks {
             AddMedicationInterventionTaskIdentifier == result.identifier,
             let title = text(from: result, for: MedicationNameQuestionIdentifier),
             let repetitions = repetitions(from: result, for: MedicationRepetitionsQuestionIdentifier),
-            let schedule = schedule(from: result, repetitions: repetitions, for: MedicationDaysQuesitonIdentifier)
+            let startDate = startDate(from: result, for: MedicationStartDateQuestionIdentifier),
+            let schedule = schedule(from: result, start: startDate, repetitions: repetitions, for: MedicationDaysQuesitonIdentifier)
         else {
             return nil
         }
@@ -324,7 +361,14 @@ fileprivate extension NewActitiviesTasks {
             })
     }
     
-    static func schedule(from taskResult: ORKTaskResult, repetitions: Int, for identifier: String) -> OCKCareSchedule? {
+    static func startDate(from taskResult: ORKTaskResult, for identifier: String) -> Date? {
+        return
+            extract(from: taskResult, identifier: identifier, extractor: { (dateResult: ORKDateQuestionResult) in
+                return dateResult.dateAnswer
+            })
+    }
+    
+    static func schedule(from taskResult: ORKTaskResult, start: Date, repetitions: Int, for identifier: String) -> OCKCareSchedule? {
         guard
             let dayList =
             extract(from: taskResult,
@@ -341,9 +385,9 @@ fileprivate extension NewActitiviesTasks {
                             .map({ $0 * repetitions })
                             .map({ NSNumber(value: $0) })
         
-        let todayComponents = NSDateComponents(date: Date(), calendar: Calendar.current) as DateComponents
+        let startComponents = NSDateComponents(date: start, calendar: Calendar.current) as DateComponents
         
-        return OCKCareSchedule.weeklySchedule(withStartDate: todayComponents,
+        return OCKCareSchedule.weeklySchedule(withStartDate: startComponents,
                                               occurrencesOnEachDay: repSchedule)
     }
 
