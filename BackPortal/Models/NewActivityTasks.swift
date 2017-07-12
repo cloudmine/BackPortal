@@ -155,7 +155,7 @@ fileprivate extension NewActitiviesTasks {
         
         let question = ORKQuestionStep(identifier: ExerciseNameQuestionIdentifier,
                                            title: NSLocalizedString("Exercise Name", comment: ""),
-                                           text: NSLocalizedString("Enter the title for this exercie activity", comment: ""),
+                                           text: NSLocalizedString("Enter the title for this exercise activity", comment: ""),
                                            answer: answer)
         question.isOptional = false
         
