@@ -35,28 +35,36 @@ PODS:
   - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
-  - CareKit (from `git@github.com:cloudmine/CareKit.git`, branch `cm-patched`)
-  - CloudMine (from `../cloudmine-ios/`)
-  - CMHealth (from `../CMHealthSDK-iOS/`)
+  - CareKit (from `git@github.com:cloudmine/CareKit.git`, branch `cm-patched-pull`)
+  - CloudMine (from `git@github.com:apbendi/cloudmine-ios.git`, branch `img-acl`)
+  - CMHealth (from `git@github.com:cloudmine/CMHealthSDK-iOS.git`, branch `photo-share`)
   - SwiftValidator (from `git@github.com:jpotts18/SwiftValidator.git`, branch `swift3-dave`)
   - TPKeyboardAvoiding (~> 1.3)
 
 EXTERNAL SOURCES:
   CareKit:
-    :branch: cm-patched
+    :branch: cm-patched-pull
     :git: git@github.com:cloudmine/CareKit.git
   CloudMine:
-    :path: ../cloudmine-ios/
+    :branch: img-acl
+    :git: git@github.com:apbendi/cloudmine-ios.git
   CMHealth:
-    :path: ../CMHealthSDK-iOS/
+    :branch: photo-share
+    :git: git@github.com:cloudmine/CMHealthSDK-iOS.git
   SwiftValidator:
     :branch: swift3-dave
     :git: git@github.com:jpotts18/SwiftValidator.git
 
 CHECKOUT OPTIONS:
   CareKit:
-    :commit: 65e9d2c9489f0f7cdf415e906b844dc355b2a160
+    :commit: d635f914d287b8c2a2d5823ce78e7e3cbd641de5
     :git: git@github.com:cloudmine/CareKit.git
+  CloudMine:
+    :commit: e3a3543dd1c8e1ede53c5c5e11fdcfaf2454d3f2
+    :git: git@github.com:apbendi/cloudmine-ios.git
+  CMHealth:
+    :commit: 8c4d7f9154536e63cfb17dcb8367c6a4a79d51d7
+    :git: git@github.com:cloudmine/CMHealthSDK-iOS.git
   SwiftValidator:
     :commit: 761df17e0439330d6b7a22b344865d131a82d8c9
     :git: git@github.com:jpotts18/SwiftValidator.git
@@ -70,6 +78,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 3222cfb27524e8e9529d10386e3f7fcf6e0d7bd7
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: c1500aea72efc20ffec08a4d043f787a25647f29
+PODFILE CHECKSUM: 0cdbd78a8050376f7a0895efccf3307c4f88db73
 
 COCOAPODS: 1.2.1
