@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meJ-oo-LPF">
-                                <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                                <rect key="frame" x="0.0" y="64" width="702.5" height="704"/>
                                 <connections>
                                     <segue destination="0eu-cO-tCq" kind="embed" id="W3Z-Mq-a6H"/>
                                 </connections>
@@ -81,38 +82,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" rowHeight="64" id="GPH-PQ-9FB" customClass="PatientCell" customModule="BackPortal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" rowHeight="96" id="GPH-PQ-9FB" customClass="PatientCell" customModule="BackPortal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GPH-PQ-9FB" id="CdH-lg-9oF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="95.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Zero" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x8-Zt-O7g">
-                                            <rect key="frame" x="20" y="15" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="94" y="22.5" width="206" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olY-vH-efG">
-                                            <rect key="frame" x="20" y="36" width="280" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="94" y="49" width="206" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bax-Ny-mYx">
+                                            <rect key="frame" x="8" y="8" width="78" height="79.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Bax-Ny-mYx" secondAttribute="height" multiplier="47:48" id="ePU-ky-Y9P"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="leading" secondItem="CdH-lg-9oF" secondAttribute="leading" constant="20" symbolic="YES" id="JQj-77-rA4"/>
+                                        <constraint firstItem="Bax-Ny-mYx" firstAttribute="leading" secondItem="CdH-lg-9oF" secondAttribute="leading" constant="8" id="0JU-9b-eBa"/>
                                         <constraint firstItem="olY-vH-efG" firstAttribute="trailing" secondItem="9x8-Zt-O7g" secondAttribute="trailing" id="LuM-Vo-ojo"/>
                                         <constraint firstItem="olY-vH-efG" firstAttribute="leading" secondItem="9x8-Zt-O7g" secondAttribute="leading" id="RWp-QP-tvx"/>
                                         <constraint firstItem="olY-vH-efG" firstAttribute="top" secondItem="9x8-Zt-O7g" secondAttribute="bottom" id="TuP-Vh-aMA"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bax-Ny-mYx" secondAttribute="bottom" constant="8" id="V5b-rd-X5T"/>
                                         <constraint firstAttribute="trailing" secondItem="9x8-Zt-O7g" secondAttribute="trailing" constant="20" symbolic="YES" id="iFX-Pa-NIx"/>
-                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="centerY" secondItem="CdH-lg-9oF" secondAttribute="centerY" multiplier="4/5" id="thA-cx-bWS"/>
+                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="leading" secondItem="Bax-Ny-mYx" secondAttribute="trailing" constant="8" symbolic="YES" id="lpd-Io-5PW"/>
+                                        <constraint firstItem="Bax-Ny-mYx" firstAttribute="top" secondItem="CdH-lg-9oF" secondAttribute="top" constant="8" id="rvh-gP-Zu4"/>
+                                        <constraint firstItem="9x8-Zt-O7g" firstAttribute="centerY" secondItem="CdH-lg-9oF" secondAttribute="centerY" multiplier="75/100" id="thA-cx-bWS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="emailLabel" destination="olY-vH-efG" id="MPM-qP-QGu"/>
                                     <outlet property="nameLabel" destination="9x8-Zt-O7g" id="q64-Uy-UvN"/>
+                                    <outlet property="patientImage" destination="Bax-Ny-mYx" id="oV8-zb-cv3"/>
                                     <segue destination="sOB-VH-YDk" kind="showDetail" id="Nxb-0S-IS8"/>
                                 </connections>
                             </tableViewCell>
@@ -136,7 +147,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZa-jh-hR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="-527"/>
+            <point key="canvasLocation" x="845.5078125" y="-527.34375"/>
         </scene>
         <!--Patient Master Nav Controller-->
         <scene sceneID="7E3-Or-qwX">
@@ -203,8 +214,8 @@
         <scene sceneID="UPg-2c-7Uc">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="0eu-cO-tCq" customClass="ActiviesViewController" customModule="BackPortal" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="4XY-SU-o9U">
-                        <rect key="frame" x="0.0" y="0.0" width="703" height="704"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4XY-SU-o9U">
+                        <rect key="frame" x="0.0" y="0.0" width="702.5" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qhC-4l-en9">
@@ -344,7 +355,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivitiesSectionHeader" id="rt5-Md-LSf" customClass="ActivitiesHeader" customModule="BackPortal" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="703" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="702.5" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYM-kB-3kh" userLabel="Content View">
@@ -403,7 +414,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Patients" width="28" height="28"/>
+        <image name="Patients" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="63N-c5-hvd"/>

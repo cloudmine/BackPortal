@@ -32,6 +32,7 @@
 		B4297F131EF2D4D500A0DE1F /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297F151EF2D4D500A0DE1F /* Launch.storyboard */; };
 		B4297F181EF2D5FF00A0DE1F /* Application.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4297F1A1EF2D5FF00A0DE1F /* Application.storyboard */; };
 		B4297F1D1EF2D63C00A0DE1F /* ApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */; };
+		B44564AE1F170D2000301FBE /* PatientImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44564AD1F170D2000301FBE /* PatientImageFetcher.swift */; };
 		B45316531EF83E0A004A8FD9 /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */; };
 		B45316551EF847EB004A8FD9 /* NoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45316541EF847EB004A8FD9 /* NoSelectionViewController.swift */; };
 		B45316571EF84D46004A8FD9 /* UIViewController+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45316561EF84D46004A8FD9 /* UIViewController+Portal.swift */; };
@@ -98,6 +99,7 @@
 		B4297F141EF2D4D500A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
 		B4297F191EF2D5FF00A0DE1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Application.storyboard; sourceTree = "<group>"; };
 		B4297F1C1EF2D63C00A0DE1F /* ApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationViewController.swift; sourceTree = "<group>"; };
+		B44564AD1F170D2000301FBE /* PatientImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientImageFetcher.swift; sourceTree = "<group>"; };
 		B45316521EF83E0A004A8FD9 /* PatientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
 		B45316541EF847EB004A8FD9 /* NoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSelectionViewController.swift; sourceTree = "<group>"; };
 		B45316561EF84D46004A8FD9 /* UIViewController+Portal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Portal.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				B41DC0191EF2E3F200B7DAE9 /* AlertUtils.swift */,
 				B499F9EB1F01568900A76098 /* Date+Portal.swift */,
 				B41CF5091F058AB700FB860F /* UIColor+Portal.swift */,
+				B44564AD1F170D2000301FBE /* PatientImageFetcher.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				B499F9EE1F016D8000A76098 /* ActivitiesHeader.swift in Sources */,
 				B41DC0161EF2DE3D00B7DAE9 /* DispatchUtils.swift in Sources */,
 				B41DC02F1EF325E600B7DAE9 /* PatientSplitViewController.swift in Sources */,
+				B44564AE1F170D2000301FBE /* PatientImageFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
