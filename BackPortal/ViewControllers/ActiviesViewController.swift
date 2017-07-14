@@ -117,9 +117,9 @@ fileprivate extension ActiviesViewController {
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-fileprivate let PortalCellCellInternalSpacing = 8.0 as CGFloat
-fileprivate let PortalCellVerticalRowSpacing = 8.0 as CGFloat
-fileprivate let PortalCellContainerEdgeSpacing = 16.0 as CGFloat
+fileprivate let PortalCellCellInternalSpacing = 24.0 as CGFloat
+fileprivate let PortalCellVerticalRowSpacing = 24.0 as CGFloat
+fileprivate let PortalCellContainerEdgeSpacing = 44.0 as CGFloat
 
 extension ActiviesViewController: UICollectionViewDelegateFlowLayout {
     
