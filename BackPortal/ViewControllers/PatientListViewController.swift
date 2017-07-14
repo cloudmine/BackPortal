@@ -30,6 +30,7 @@ class PatientListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         activeObserver = NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
             //self.fetchPatients()
         }
@@ -83,7 +84,7 @@ extension PatientListViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64.0
+        return 96.0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -45,6 +45,8 @@ class AssessmentCell: UICollectionViewCell {
         
         onMain {
             self.layer.cornerRadius = ActivityCellCornerRadius
+            self.layer.borderWidth = ActivityCellBorderWidth
+            self.layer.borderColor = ActivityCellBorderColor.cgColor
             
             self.nameLabel?.text = event.activity.title
             self.subLabel?.text = event.activity.text
