@@ -1,7 +1,9 @@
 import UIKit
 import CareKit
 
-let ActivityCellCornerRadius = 6.0 as CGFloat
+let ActivityCellCornerRadius = 0.0 as CGFloat
+let ActivityCellBorderWidth = 1.0 as CGFloat
+let ActivityCellBorderColor = UIColor.portalBlue
 
 enum InterventionCellTapbackAction {
     case toggle(OCKCarePlanEvent)
@@ -45,6 +47,8 @@ class InterventionCell: UICollectionViewCell {
             self.resetStackView()
             
             self.layer.cornerRadius = ActivityCellCornerRadius
+            self.layer.borderWidth = ActivityCellBorderWidth
+            self.layer.borderColor = ActivityCellBorderColor.cgColor
             
             self.nameLabel?.text = activity.title
             self.subLabel?.text = activity.text

@@ -13,6 +13,15 @@ class PatientCell: UITableViewCell {
     
     private var configureCount: Int = 0
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.portalBlue
+        
+        self.selectedBackgroundView = selectedView
+    }
+    
     // MARK: Public
     
     func configure(with patient: OCKPatient) {
@@ -29,6 +38,7 @@ class PatientCell: UITableViewCell {
             }
         
             onMain {
+                self.patientImage?.tintColor = UIColor.black
                 self.patientImage?.image = image
             }
         }

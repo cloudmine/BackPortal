@@ -30,6 +30,7 @@ class PatientListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         activeObserver = NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
             //self.fetchPatients()
         }
