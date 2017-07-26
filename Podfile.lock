@@ -20,50 +20,35 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CareKit (1.2.0)
-  - CloudMine (1.7.15):
+  - CareKit (1.2.1)
+  - CloudMine (1.7.16):
     - AFNetworking (~> 2.6.3)
-    - CloudMine/no-arc (= 1.7.15)
-  - CloudMine/no-arc (1.7.15):
+    - CloudMine/no-arc (= 1.7.16)
+  - CloudMine/no-arc (1.7.16):
     - AFNetworking (~> 2.6.3)
   - CMHealth (0.6.0):
     - CareKit (~> 1.2)
-    - CloudMine (~> 1.7)
+    - CloudMine (~> 1.7.16)
     - ResearchKit (~> 1.3)
-  - ResearchKit (1.4.1)
+  - ResearchKit (1.5.2)
   - SwiftValidator (4.0.1)
   - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
-  - CareKit (from `git@github.com:cloudmine/CareKit.git`, branch `cm-patched-pull`)
-  - CloudMine (from `git@github.com:apbendi/cloudmine-ios.git`, branch `img-acl`)
-  - CMHealth (from `git@github.com:cloudmine/CMHealthSDK-iOS.git`, branch `photo-share`)
+  - CMHealth (from `git@github.com:cloudmine/CMHealthSDK-iOS.git`)
   - SwiftValidator (from `git@github.com:jpotts18/SwiftValidator.git`, branch `swift3-dave`)
   - TPKeyboardAvoiding (~> 1.3)
 
 EXTERNAL SOURCES:
-  CareKit:
-    :branch: cm-patched-pull
-    :git: git@github.com:cloudmine/CareKit.git
-  CloudMine:
-    :branch: img-acl
-    :git: git@github.com:apbendi/cloudmine-ios.git
   CMHealth:
-    :branch: photo-share
     :git: git@github.com:cloudmine/CMHealthSDK-iOS.git
   SwiftValidator:
     :branch: swift3-dave
     :git: git@github.com:jpotts18/SwiftValidator.git
 
 CHECKOUT OPTIONS:
-  CareKit:
-    :commit: d635f914d287b8c2a2d5823ce78e7e3cbd641de5
-    :git: git@github.com:cloudmine/CareKit.git
-  CloudMine:
-    :commit: e3a3543dd1c8e1ede53c5c5e11fdcfaf2454d3f2
-    :git: git@github.com:apbendi/cloudmine-ios.git
   CMHealth:
-    :commit: 8c4d7f9154536e63cfb17dcb8367c6a4a79d51d7
+    :commit: 65d69aa1581aef3ced6c8a60dd20e756fd7d105f
     :git: git@github.com:cloudmine/CMHealthSDK-iOS.git
   SwiftValidator:
     :commit: 761df17e0439330d6b7a22b344865d131a82d8c9
@@ -71,13 +56,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  CareKit: 94c2322c43a138c5334bd41853d009cf1b8fefb5
-  CloudMine: a465ed5e1d37385bd076aad15407afef3c686041
-  CMHealth: c7a513beb7af2befab8e0cc1be2accad1fabcdd8
-  ResearchKit: 3533ea3a2270e4ed7ff830e19755dc959fdfd430
+  CareKit: aa0c8a57c1a2d7cfb46ff3981fe1503f02ca302e
+  CloudMine: aa3a609ab22eec132ff446839da0f97072d6b4ec
+  CMHealth: 32b5fc2959fbfcd69c33cac5f8d3a43967d60b34
+  ResearchKit: a5770681dd61afddd3d1f24d232b9abf00cba454
   SwiftValidator: 3222cfb27524e8e9529d10386e3f7fcf6e0d7bd7
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 0cdbd78a8050376f7a0895efccf3307c4f88db73
+PODFILE CHECKSUM: 5cb096280043ed9775eb33e9fbc23730f8e739b3
 
 COCOAPODS: 1.2.1

@@ -8,7 +8,7 @@ final class PatientImageFetcher {
     static var shared: PatientImageFetcher = PatientImageFetcher()
     
     func fetchImage(for patient: OCKPatient, callback: @escaping (UIImage?) -> Void) {
-        guard let photoId = patient.userInfo?["photoId"] as? String else {            
+        guard let photoId = patient.cmh_patientUserData?.userId else {
             callback(#imageLiteral(resourceName: "ProfilePlaceHolder").withRenderingMode(.alwaysTemplate))
             return
         }
@@ -18,7 +18,7 @@ final class PatientImageFetcher {
             return
         }
         
-        patient.fetchProfileImage { (success, image, error) in
+        patient.cmh_fetchProfileImage { (success, image, error) in
             guard let image = image, success else {
                 print("[PORTAL] Error fetchign profile: \(String(describing: error?.localizedDescription))")
                 callback(#imageLiteral(resourceName: "ProfilePlaceHolder").withRenderingMode(.alwaysTemplate))
